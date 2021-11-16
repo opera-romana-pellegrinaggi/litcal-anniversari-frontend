@@ -1,23 +1,109 @@
-import logo from './logo.svg';
-import './App.css';
+import { Button, Navbar, Nav } from 'react-bootstrap'
+import usePersistedState from 'use-persisted-state-hook'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDoubleRight, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons'
 
-function App() {
+import logo from './assets/images/logo-orp.png'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './assets/css/sb-admin-2.css'
+import './App.css'
+
+const APP_VERSION = "0.1";
+
+const ANNIVERSARY = {
+  "CENTENARIO"    : 100,
+  "ONICE"         : 95,
+  "GRANITO"       : 90,
+  "MARMO"         : 85,
+  "QUERCIA"       : 80,
+  "PLATINO"       : 75,
+  "FERRO"         : 70,
+  "PIETRA"        : 65,
+  "DIAMANTE"      : 60,
+  "SMERALDO"      : 55,
+  "ORO"           : 50,
+  "ZAFFIRO"       : 45,
+  "RUBINO"        : 40,
+  "CORALLO"       : 35,
+  "PERLA"         : 30,
+  "ARGENTO"       : 25,
+  "PORCELLANA"    : 20,
+  "CRISTALLO"     : 15,
+  "STAGNO"        : 10,
+  "LEGNO"         : 5,
+  "CARTA"         : 1
+};
+
+const RECURRING = [
+  "STAGNO",
+  "PORCELLANA",
+  "ARGENTO",
+  "PERLA",
+  "RUBINO",
+  "ORO",
+  "DIAMANTE",
+  "FERRO",
+  "PLATINO",
+  "QUERCIA",
+  "GRANITO",
+  "CENTENARIO"
+];
+
+
+const App = () => {
+
+  const [ sidebarCollapsed, setSidebarCollapsed ] = usePersistedState( 'sidebarCollapsed', false );
+  const toggleSidebar = () => setSidebarCollapsed( prevValue => !prevValue );
+
+  const [ currentNavLink, setCurrentNavLink ] = usePersistedState( 'currentNavLink', 'CENTENARIO' );
+  const updateCurrentNavLink = (eventKey, event) => {
+    //setCurrentNavLink(eventKey);
+    console.log('eventKey = ');
+    console.log(eventKey);
+    console.log('event = ');
+    console.log(event);
+  };
+
+  const [ anniversaryYear, setAnniversaryYear ] = usePersistedState( 'anniversaryYear', new Date().getFullYear() + 1 );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="wrapper">
+      {/* Sidebar start */}
+      <Nav activeKey={currentNavLink} className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion ${sidebarCollapsed ? "toggled" : ""}`} id="accordionSidebar">
+          <Navbar.Brand as="div" className="sidebar-brand d-flex align-items-center justify-content-center mb-3" style={{position:"relative",top:"20px",width:'100%',height:'auto'}}>
+              <div className="sidebar-brand-icon"><img alt="" src={logo} style={{height:'75px'}}  /></div>
+              <div className="sidebar-brand-text mx-3">Centro<br />Pastorale<br />ORP</div>
+          </Navbar.Brand>
+          <hr className="sidebar-divider my-0" />
+          {Object.keys(ANNIVERSARY).map((key, i) => {
+            return(<Nav.Item key={i}><Button variant="outline-light" onClick={updateCurrentNavLink}><span className={RECURRING.includes(key) ? "font-weight-bold shadow" : "font-weight-normal"}>{key} ({ANNIVERSARY[key]})</span></Button></Nav.Item>)
+          })}
+          <hr className="sidebar-divider my-2" />
+          {/* Sidebar toggle */}
+          <Nav.Item className="text-center mr-5">
+              <Button variant="outline-light" onClick={toggleSidebar}>
+              <FontAwesomeIcon icon={sidebarCollapsed ? faAngleDoubleRight : faAngleDoubleLeft} />
+              </Button>
+          </Nav.Item>
+          <div style={{position:"absolute",bottom:"0px",width:"inherit",padding:".5rem",textAlign:"center",backgroundColor:"darkblue",color:"white",textShadow:"1px 1px 3px black",fontFamily:"Segoe UI"}}>Version {APP_VERSION}</div>
+      </Nav>
+      {/* Sidebar end */}
+      <div id="content-wrapper" className="d-flex flex-column">
+        <div id="content">
+          <Navbar className="navbar-light bg-white topbar mb-2 static-top shadow justify-content-between">
+            <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
+              <label>
+                <span>CALCOLARE GLI ANNIVERSARI PER L'ANNO </span>
+                <input type="number" min="1969" max="9999" class="form-control bg-light border-0 small" value={anniversaryYear} />
+              </label>
+            </form>
+          </Navbar>
+          <div className="container-fluid anniversary-calculator">
+            <h1 className="text-center">Calcolatrice degli Anniversari per i Santi del Calendario Universale</h1>
+            <h3 className="text-center">anniversari {currentNavLink} nell'anno {anniversaryYear}</h3>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
