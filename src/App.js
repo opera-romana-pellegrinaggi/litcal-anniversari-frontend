@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Navbar, Nav } from 'react-bootstrap'
 import usePersistedState from 'use-persisted-state-hook'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleRight, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons'
+import AnniversaryEventsTable from './components/AnniversaryEventsTable'
 
 import logo from './assets/images/logo-orp.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -63,6 +64,21 @@ const App = () => {
 
   const [ anniversaryYear, setAnniversaryYear ] = useState( new Date().getFullYear() + 1 );
 
+  const ENDPOINT_URL = 'https://dorazio.orp.org/anniversaryCalculator/calculator.php';
+  const [ responseObj, setResponseObj ] = useState({});
+  useEffect(() => {
+    fetch(`${ENDPOINT_URL}?YEAR=${anniversaryYear}`)
+        .then(response => response.json())
+        .then(responseData => {
+            setResponseObj(responseData);
+            console.log(responseData);
+        })
+    return () => {
+      setResponseObj({});
+    }
+  }, [setResponseObj,anniversaryYear]);
+
+
   return (
     <div id="wrapper">
       {/* Sidebar start */}
@@ -98,6 +114,7 @@ const App = () => {
           <div className="container-fluid anniversary-calculator">
             <h1 className="text-center">Calcolatrice degli Anniversari per i Santi del Calendario Universale</h1>
             <h3 className="text-center">anniversari {currentNavLink} nell'anno {anniversaryYear}</h3>
+            <AnniversaryEventsTable responseObj={responseObj} currentNavLink={currentNavLink} />
           </div>
         </div>
       </div>
