@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { Button, Navbar, Nav } from 'react-bootstrap'
 import usePersistedState from 'use-persisted-state-hook'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -55,16 +56,12 @@ const App = () => {
   const [ sidebarCollapsed, setSidebarCollapsed ] = usePersistedState( 'sidebarCollapsed', false );
   const toggleSidebar = () => setSidebarCollapsed( prevValue => !prevValue );
 
-  const [ currentNavLink, setCurrentNavLink ] = usePersistedState( 'currentNavLink', 'CENTENARIO' );
-  const updateCurrentNavLink = (eventKey, event) => {
-    //setCurrentNavLink(eventKey);
-    console.log('eventKey = ');
-    console.log(eventKey);
-    console.log('event = ');
-    console.log(event);
+  const [ currentNavLink, setCurrentNavLink ] = useState( 'CENTENARIO' );
+  const updateCurrentNavLink = val => {
+    setCurrentNavLink(val);
   };
 
-  const [ anniversaryYear, setAnniversaryYear ] = usePersistedState( 'anniversaryYear', new Date().getFullYear() + 1 );
+  const [ anniversaryYear, setAnniversaryYear ] = useState( new Date().getFullYear() + 1 );
 
   return (
     <div id="wrapper">
@@ -76,7 +73,7 @@ const App = () => {
           </Navbar.Brand>
           <hr className="sidebar-divider my-0" />
           {Object.keys(ANNIVERSARY).map((key, i) => {
-            return(<Nav.Item key={i}><Button variant="outline-light" onClick={updateCurrentNavLink}><span className={RECURRING.includes(key) ? "font-weight-bold shadow" : "font-weight-normal"}>{key} ({ANNIVERSARY[key]})</span></Button></Nav.Item>)
+            return(<Nav.Item key={i} className="w-100"><Button variant="outline-light" size="sm" onClick={(ev) => updateCurrentNavLink(key)} className={"w-100"} active={key === currentNavLink}><span className={RECURRING.includes(key) ? "font-weight-bold shadow" : "font-weight-normal"}>{key} ({ANNIVERSARY[key]})</span></Button></Nav.Item>)
           })}
           <hr className="sidebar-divider my-2" />
           {/* Sidebar toggle */}
@@ -94,7 +91,7 @@ const App = () => {
             <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
               <label>
                 <span>CALCOLARE GLI ANNIVERSARI PER L'ANNO </span>
-                <input type="number" min="1969" max="9999" class="form-control bg-light border-0 small" value={anniversaryYear} />
+                <input type="number" min="1969" max="9999" className="form-control bg-light border-0 small" value={anniversaryYear} onChange={ev => setAnniversaryYear(ev.target.value)} />
               </label>
             </form>
           </Navbar>
