@@ -31,17 +31,20 @@ const AnniversaryEventsTable = props => {
                     <tr key={i}>
                         <td>{el.soggetto}</td>
                         <td>{el.ricorrenza}</td>
-                        <td>{el.anno}</td>
+                        <td>
+                            <div>{el.anno}</div>
+                            <div>({el.yearDiff + ' ' + (el.yearDiff > 1 ? "anni" : "anno")})</div>
+                        </td>
                         <td>{el.giorno + ' ' + MONTH[el.mese]}</td>
                         <td>
-                            <div><b>NASCITA:</b> {el.luogoNascita}</div>
-                            <div><b>MORTE:</b> {el.luogoMorte}</div>
-                            <div><b>SEPOLTURA:</b> {el.luogoSepoltura}</div>
-                            <div><b>SANTUARIO PRINCIPALE:</b> {el.santuarioPrincipale}</div>
-                            <div><b>NAZIONI:</b> {el.luoghi}</div>
+                            <div><b>NASCITA:</b> {el.luogoNascita || ""}</div>
+                            <div><b>MORTE:</b> {el.luogoMorte || ""}</div>
+                            <div><b>SEPOLTURA:</b> {el.luogoSepoltura || ""}</div>
+                            <div><b>SANTUARIO PRINCIPALE:</b> {el.santuarioPrincipale || ""}</div>
+                            <div><b>NAZIONI:</b> {el.luoghi || ""}</div>
                         </td>
                         <td>{el.ambito.join(" | ") }</td>
-                        <td><ReadMoreReact key={el.idx} text={el.note} /></td>
+                        <td><ReadMoreReact key={el.idx} text={el.note || ""} /></td>
                     </tr>
                 )
             }) }
