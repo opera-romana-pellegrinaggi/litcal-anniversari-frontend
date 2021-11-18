@@ -1,3 +1,5 @@
+import ReadMoreReact from 'read-more-react'
+
 const MONTH = [
     "null_value",
     "Gennaio",
@@ -21,26 +23,25 @@ const AnniversaryEventsTable = props => {
     if( LitEvents !== undefined ) {
         console.log("currentNavLink = " + currentNavLink);
         return(
-            <table style={{width:"90%",margin:"10px auto",border:"1px solid blue"}}>
-                <thead><tr><th>IDX</th><th>SOGGETTO</th><th>RICORRENZA</th><th>ANNO</th><th>MEMORIA LITURGICA</th><th>LUOGHI</th><th>SETTORI ORP</th><th>NOTE</th></tr></thead>
+            <table className="ricorrenzeTbl">
+                <thead><tr><th>SOGGETTO</th><th>RICORRENZA</th><th>ANNO</th><th>MEMORIA LITURGICA</th><th>LUOGHI</th><th>SETTORI ORP</th><th>NOTE</th></tr></thead>
                 <tbody>
-            { LitEvents.filter( el => el.anniversario === currentNavLink ).map((el,idx) => {
+            { LitEvents.filter( el => el.anniversario === currentNavLink ).map((el,i) => {
                 return (
-                    <tr key={idx} style={{border:"1px solid blue"}}>
-                        <td>{el.idx}</td>
+                    <tr key={i}>
                         <td>{el.soggetto}</td>
                         <td>{el.ricorrenza}</td>
                         <td>{el.anno}</td>
                         <td>{el.giorno + ' ' + MONTH[el.mese]}</td>
                         <td>
-                            <div>NASCITA: {el.luogoNascita}</div>
-                            <div>MORTE: {el.luogoMorte}</div>
-                            <div>SEPOLTURA: {el.luogoSepoltura}</div>
-                            <div>SANTUARIO PRINCIPALE: {el.santuarioPrincipale}</div>
-                            <div>NAZIONI: {el.luoghi}</div>
+                            <div><b>NASCITA:</b> {el.luogoNascita}</div>
+                            <div><b>MORTE:</b> {el.luogoMorte}</div>
+                            <div><b>SEPOLTURA:</b> {el.luogoSepoltura}</div>
+                            <div><b>SANTUARIO PRINCIPALE:</b> {el.santuarioPrincipale}</div>
+                            <div><b>NAZIONI:</b> {el.luoghi}</div>
                         </td>
                         <td>{el.ambito.join(" | ") }</td>
-                        <td>{el.note}</td>
+                        <td><ReadMoreReact key={el.idx} text={el.note} /></td>
                     </tr>
                 )
             }) }

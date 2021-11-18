@@ -32,3 +32,40 @@
   padding-left: 6px;
   padding-right: 6px;
 }
+
+.ricorrenzeTbl {
+  width:"90%";
+  margin:"10px auto";
+  font-size: .8em;
+}
+
+.ricorrenzeTbl th, td {
+  padding: 6px;
+}
+
+.ricorrenzeTbl thead tr {
+  border-bottom: 3px groove white;
+}
+
+.ricorrenzeTbl tbody tr {
+  border-bottom: 1px groove white;
+}
+
+.ricorrenzeTbl tbody tr td:last-child,td:nth-child(5) {
+  width: 25%;
+}
+
+.read-more-button {
+  background: grey;
+  color: #fff;
+  display: inline-block;
+  margin: 0 6px;
+  padding: 3px 6px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.read-more-button:hover {
+  background:lightgray;
+  color: gray;
+}
