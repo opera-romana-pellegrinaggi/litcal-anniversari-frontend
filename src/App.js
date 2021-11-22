@@ -111,7 +111,7 @@ const App = () => {
             <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
               <label>
                 <span>CALCOLARE GLI ANNIVERSARI PER L'ANNO </span>
-                <input type="number" min="1969" max="9999" className="form-control bg-light border-0 small" value={anniversaryYear} onChange={ev => setAnniversaryYear(ev.target.value)} />
+                <input type="number" min="1969" max="9999" className="form-control bg-dark text-white border-0 small ml-2" value={anniversaryYear} onChange={ev => setAnniversaryYear(ev.target.value)} />
               </label>
             </form>
           </Navbar>
