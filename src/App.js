@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Navbar, Nav } from 'react-bootstrap'
+import { Button, Navbar, Nav, ButtonGroup } from 'react-bootstrap'
 import usePersistedState from 'use-persisted-state-hook'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleRight, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons'
@@ -66,12 +66,14 @@ const App = () => {
 
   const ENDPOINT_URL = 'https://dorazio.orp.org/anniversaryCalculator/calculator.php';
   const [ responseObj, setResponseObj ] = useState({});
+  const [ litEvents, setLitEvents ] = useState([]);
   useEffect(() => {
     fetch(`${ENDPOINT_URL}?YEAR=${anniversaryYear}`)
         .then(response => response.json())
         .then(responseData => {
             setResponseObj(responseData);
-            console.log(responseData);
+            let { LitEvents } = { ...responseData };
+            setLitEvents(LitEvents);
         })
     return () => {
       setResponseObj({});
@@ -82,15 +84,17 @@ const App = () => {
   return (
     <div id="wrapper">
       {/* Sidebar start */}
-      <Nav activeKey={currentNavLink} className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion ${sidebarCollapsed ? "toggled" : ""}`} id="accordionSidebar">
+      <Nav className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion ${sidebarCollapsed ? "toggled" : ""}`} id="accordionSidebar">
           <Navbar.Brand as="div" className="sidebar-brand d-flex align-items-center justify-content-center mb-3" style={{position:"relative",top:"20px",width:'100%',height:'auto'}}>
               <div className="sidebar-brand-icon"><img alt="" src={logo} style={{height:'75px'}}  /></div>
               <div className="sidebar-brand-text mx-3">Centro<br />Pastorale<br />ORP</div>
           </Navbar.Brand>
           <hr className="sidebar-divider my-0" />
-          {Object.keys(ANNIVERSARY).map((key, i) => {
-            return(<Nav.Item key={i} className="w-100"><Button variant="outline-light" size="sm" onClick={(ev) => updateCurrentNavLink(key)} className={"w-100"} active={key === currentNavLink}><span className={RECURRING.includes(key) ? "font-weight-bold shadow" : "font-weight-normal"}>{key} ({ANNIVERSARY[key]})</span></Button></Nav.Item>)
-          })}
+          <ButtonGroup vertical>
+            {Object.keys(ANNIVERSARY).map((key, i) => {
+              return(<Button variant="outline-light" size="sm" onClick={(ev) => updateCurrentNavLink(key)} className={"w-100"} active={key === currentNavLink} key={i}><span className={RECURRING.includes(key) ? "font-weight-bold" : "font-weight-normal"}>{ANNIVERSARY[key]}° - {key} ({litEvents.filter( el => el.anniversario === key ).length})</span></Button>)
+            })}
+          </ButtonGroup>
           <hr className="sidebar-divider my-2" />
           {/* Sidebar toggle */}
           <Nav.Item className="text-center mr-5">
@@ -98,7 +102,7 @@ const App = () => {
               <FontAwesomeIcon icon={sidebarCollapsed ? faAngleDoubleRight : faAngleDoubleLeft} />
               </Button>
           </Nav.Item>
-          <div style={{position:"absolute",bottom:"0px",width:"inherit",padding:".5rem",textAlign:"center",backgroundColor:"darkblue",color:"white",textShadow:"1px 1px 3px black",fontFamily:"Segoe UI"}}>Version {APP_VERSION}</div>
+          <div id="app_version" key="app_version" style={{position:"absolute",bottom:"0px",width:"inherit",padding:".5rem",textAlign:"center",backgroundColor:"darkblue",color:"white",textShadow:"1px 1px 3px black",fontFamily:"Segoe UI"}}>Version {APP_VERSION}</div>
       </Nav>
       {/* Sidebar end */}
       <div id="content-wrapper" className="d-flex flex-column">
