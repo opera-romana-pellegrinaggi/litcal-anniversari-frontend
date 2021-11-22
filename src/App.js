@@ -90,9 +90,9 @@ const App = () => {
               <div className="sidebar-brand-text mx-3">Centro<br />Pastorale<br />ORP</div>
           </Navbar.Brand>
           <hr className="sidebar-divider my-0" />
-          <ButtonGroup vertical>
+          <ButtonGroup className={"w-100"} vertical>
             {Object.keys(ANNIVERSARY).map((key, i) => {
-              return(<Button variant="outline-light" size="sm" onClick={(ev) => updateCurrentNavLink(key)} className={"w-100"} active={key === currentNavLink} key={i}><span className={RECURRING.includes(key) ? "font-weight-bold" : "font-weight-normal"}>{ANNIVERSARY[key]}° - {key} ({litEvents.filter( el => el.anniversario === key ).length})</span></Button>)
+              return(<Button variant="outline-light" size="sm" onClick={(ev) => updateCurrentNavLink(key)} active={key === currentNavLink} key={i}><span className={RECURRING.includes(key) ? "font-weight-bold" : "font-weight-normal"}>{ANNIVERSARY[key]}° - {key} ({litEvents.filter( el => el.anniversario === key ).length})</span></Button>)
             })}
           </ButtonGroup>
           <hr className="sidebar-divider my-2" />
