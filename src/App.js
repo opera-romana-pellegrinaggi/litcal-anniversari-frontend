@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/css/sb-admin-2.css'
 import './App.css'
 
-const APP_VERSION = "0.1";
+const APP_VERSION = "0.2";
 
 const ANNIVERSARY = {
   "CENTENARIO"    : 100,
@@ -92,7 +92,7 @@ const App = () => {
           <hr className="sidebar-divider my-0" />
           <ButtonGroup className={"w-100"} vertical>
             {Object.keys(ANNIVERSARY).map((key, i) => {
-              return(<Button variant="outline-light" size="sm" onClick={(ev) => updateCurrentNavLink(key)} active={key === currentNavLink} key={i}><span className={RECURRING.includes(key) ? "font-weight-bold" : "font-weight-normal"}>{ANNIVERSARY[key]}° - {key} ({litEvents.filter( el => el.anniversario === key ).length})</span></Button>)
+              return(<Button variant="outline-light" size="sm" onClick={(ev) => updateCurrentNavLink(key)} active={key === currentNavLink} disabled={litEvents.filter( el => el.anniversario === key ).length === 0} key={i} className={litEvents.filter( el => el.anniversario === key ).length === 0 ? 'bg-gradient-secondary' : ''}><span className={RECURRING.includes(key) ? "font-weight-bold" : "font-weight-normal"}>{ANNIVERSARY[key]}° - {key} ({litEvents.filter( el => el.anniversario === key ).length})</span></Button>)
             })}
           </ButtonGroup>
           <hr className="sidebar-divider my-2" />

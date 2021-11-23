@@ -23,8 +23,9 @@ const AnniversaryEventsTable = props => {
     if( LitEvents !== undefined ) {
         console.log("currentNavLink = " + currentNavLink);
         return(
-            <table className="ricorrenzeTbl">
-                <thead><tr><th>SOGGETTO</th><th>RICORRENZA</th><th>ANNO</th><th>MEMORIA LITURGICA</th><th>LUOGHI</th><th>SETTORI ORP</th><th>NOTE</th></tr></thead>
+            <div className="ricorrenzeTblWrapper">
+            <table className="ricorrenzeTbl position-relative">
+                <thead><tr><th>SOGGETTO</th><th>RICORRENZA</th><th>ANNO</th><th>MEMORIA LITURGICA</th><th>LUOGHI</th><th>SETTORI ORP</th><th>NOTE</th><th>PATRONATO</th></tr></thead>
                 <tbody>
             { LitEvents.filter( el => el.anniversario === currentNavLink ).map((el,i) => {
                 return (
@@ -43,13 +44,15 @@ const AnniversaryEventsTable = props => {
                             <div><b>SANTUARIO PRINCIPALE:</b> {el.santuarioPrincipale || ""}</div>
                             <div><b>NAZIONI:</b> {el.luoghi || ""}</div>
                         </td>
-                        <td>{el.ambito.join(" | ") }</td>
+                        <td>{el.ambito.map((el,i) => { return <div key={i} className="text-center">{el}</div>})}</td>
                         <td><ReadMoreReact key={el.idx} text={el.note || ""} /></td>
+                        <td>{el.patrono}</td>
                     </tr>
                 )
             }) }
                 </tbody>
             </table>
+            </div>
         );
     } else {
         return (

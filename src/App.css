@@ -33,14 +33,27 @@
   padding-right: 6px;
 }
 
+.ricorrenzeTblWrapper {
+  height: 75vh;
+  overflow-y: auto;
+  margin: 10px 0;
+}
+
 .ricorrenzeTbl {
-  width:"90%";
-  margin:"10px auto";
+  width: 95%;
+  margin: 0 auto;
   font-size: .8em;
 }
 
+.ricorrenzeTbl thead {
+  position: sticky;
+  inset-block-start: 0;
+  background-color: darkblue;
+  color: rgb(235, 235, 235);
+}
+
 .ricorrenzeTbl th, td {
-  padding: 6px;
+  padding: 6px 12px;
 }
 
 .ricorrenzeTbl thead tr {
@@ -51,7 +64,7 @@
   border-bottom: 1px groove white;
 }
 
-.ricorrenzeTbl tbody tr td:last-child,td:nth-child(5) {
+.ricorrenzeTbl tbody tr td:nth-child(7),td:nth-child(5) {
   width: 25%;
 }
 
