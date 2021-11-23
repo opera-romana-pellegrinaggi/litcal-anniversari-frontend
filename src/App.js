@@ -92,12 +92,12 @@ const App = () => {
           <hr className="sidebar-divider my-0" />
           <ButtonGroup className={"w-100"} vertical>
             {Object.keys(ANNIVERSARY).map((key, i) => {
-              return(<Button variant="outline-light" size="sm" onClick={(ev) => updateCurrentNavLink(key)} active={key === currentNavLink} disabled={litEvents.filter( el => el.anniversario === key ).length === 0} key={i} className={litEvents.filter( el => el.anniversario === key ).length === 0 ? 'bg-gradient-secondary' : ''}><span className={RECURRING.includes(key) ? "font-weight-bold" : "font-weight-normal"}>{ANNIVERSARY[key]}° - {key} ({litEvents.filter( el => el.anniversario === key ).length})</span></Button>)
+              return(<Button variant="outline-light" size="sm" onClick={(ev) => updateCurrentNavLink(key)} active={key === currentNavLink} disabled={litEvents.filter( el => el.anniversario === key ).length === 0} key={i} className={litEvents.filter( el => el.anniversario === key ).length === 0 ? 'bg-gradient-secondary' : ''}><div className={RECURRING.includes(key) ? "font-weight-bold" : "font-weight-normal"}><span>{ANNIVERSARY[key]}°</span><span className={sidebarCollapsed ? "d-none" : ""}> - {key}</span><span> ({litEvents.filter( el => el.anniversario === key ).length})</span></div></Button>)
             })}
           </ButtonGroup>
           <hr className="sidebar-divider my-2" />
           {/* Sidebar toggle */}
-          <Nav.Item className="text-center mr-5">
+          <Nav.Item className="text-center mr-4">
               <Button variant="outline-light" onClick={toggleSidebar}>
               <FontAwesomeIcon icon={sidebarCollapsed ? faAngleDoubleRight : faAngleDoubleLeft} />
               </Button>
