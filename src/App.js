@@ -64,11 +64,10 @@ const App = () => {
 
   const [ anniversaryYear, setAnniversaryYear ] = useState( new Date().getFullYear() + 1 );
 
-  const ENDPOINT_URL = 'https://dorazio.orp.org/anniversaryCalculator/calculator.php';
   const [ responseObj, setResponseObj ] = useState({});
   const [ litEvents, setLitEvents ] = useState([]);
   useEffect(() => {
-    fetch(`${ENDPOINT_URL}?YEAR=${anniversaryYear}`)
+    fetch(`${process.env.REACT_APP_ENDPOINT_URL}?YEAR=${anniversaryYear}`)
         .then(response => response.json())
         .then(responseData => {
             setResponseObj(responseData);
