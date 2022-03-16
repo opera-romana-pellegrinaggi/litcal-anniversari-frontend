@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.sidebar.sidebar-brand {
+  padding: 1rem;
+}
+
 .sidebar.accordion .sidebar-brand-icon {
   position: relative;
   top: -2px;
@@ -16,16 +20,13 @@
   text-shadow: 2px 3px 15px rgba(0,0,0,0.5);
 }
 
-.sidebar .nav-item .nav-link {
-  padding: 0.15rem 1rem;
-}
-
 .sidebar hr.sidebar-divider {
   width: 85%;
 }
 
-.sidebar .nav-item .shadow {
-  text-shadow: 2px 3px 15px rgba(0,0,0,0.5);
+.anniversaryCategories button {
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
 }
 
 #content .container-fluid.anniversary-calculator {
@@ -40,7 +41,6 @@
 }
 
 .ricorrenzeTbl {
-  width: 95%;
   margin: 0 auto;
   font-size: .8em;
 }

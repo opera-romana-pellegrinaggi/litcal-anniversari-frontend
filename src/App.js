@@ -84,17 +84,15 @@ const App = () => {
     <div id="wrapper">
       {/* Sidebar start */}
       <Nav className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion ${sidebarCollapsed ? "toggled" : ""}`} id="accordionSidebar">
-          <Navbar.Brand as="div" className="sidebar-brand d-flex align-items-center justify-content-center mb-3" style={{position:"relative",top:"20px",width:'100%',height:'auto'}}>
-              <div className="sidebar-brand-icon"><img alt="" src={logo} style={{height:'75px'}}  /></div>
+          <Navbar.Brand as="div" className="sidebar-brand d-flex align-items-center justify-content-center" style={{position:"relative",top:"0",width:'100%',height:'auto'}}>
+              <div className="sidebar-brand-icon"><img alt="" src={logo} style={{height:'75px'}} /></div>
               <div className="sidebar-brand-text mx-3">Centro<br />Pastorale<br />ORP</div>
           </Navbar.Brand>
-          <hr className="sidebar-divider my-0" />
-          <ButtonGroup className={"w-100"} vertical>
+          <ButtonGroup className={"w-100 anniversaryCategories mb-2"} vertical>
             {Object.keys(ANNIVERSARY).map((key, i) => {
               return(<Button variant="outline-light" size="sm" onClick={(ev) => updateCurrentNavLink(key)} active={key === currentNavLink} disabled={litEvents.filter( el => el.anniversario === key ).length === 0} key={i} className={litEvents.filter( el => el.anniversario === key ).length === 0 ? 'bg-gradient-secondary' : ''}><div className={RECURRING.includes(key) ? "font-weight-bold" : "font-weight-normal"}><span>{ANNIVERSARY[key]}°</span><span className={sidebarCollapsed ? "d-none" : ""}> - {key}</span><span> ({litEvents.filter( el => el.anniversario === key ).length})</span></div></Button>)
             })}
           </ButtonGroup>
-          <hr className="sidebar-divider my-2" />
           {/* Sidebar toggle */}
           <Nav.Item className="text-center mr-4">
               <Button variant="outline-light" onClick={toggleSidebar}>
@@ -115,8 +113,8 @@ const App = () => {
             </form>
           </Navbar>
           <div className="container-fluid anniversary-calculator">
-            <h1 className="text-center">Calcolatrice degli Anniversari per i Santi del Calendario Universale</h1>
-            <h3 className="text-center">anniversari {currentNavLink} nell'anno {anniversaryYear}</h3>
+            <h2 className="text-center">Calcolatrice degli Anniversari per i Santi del Calendario Universale</h2>
+            <h4 className="text-center">anniversari {currentNavLink} nell'anno {anniversaryYear}</h4>
             <AnniversaryEventsTable responseObj={responseObj} currentNavLink={currentNavLink} />
           </div>
         </div>

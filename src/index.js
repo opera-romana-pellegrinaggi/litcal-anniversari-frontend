@@ -4,7 +4,8 @@ import './index.css'
 import App from './App'
 //import reportWebVitals from './reportWebVitals'
 
-const baseUrl = process.env.NODE_ENV === 'production' ? '/centropastorale' : '/';
+//const baseUrl = process.env.NODE_ENV === 'production' ? '/anniversariFrontend' : '/';
+const baseUrl = process.env.PUBLIC_URL;
 console.log('baseUrl = ' + baseUrl);
 
 ReactDOM.render(
