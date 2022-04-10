@@ -18,24 +18,27 @@ const APP_VERSION = "0.3";
 
 const App = () => {
 
-  const [ sidebarCollapsed, setSidebarCollapsed ] = usePersistedState( 'sidebarCollapsed', false );
-  const toggleSidebar = () => setSidebarCollapsed( prevValue => !prevValue );
-
-  const [ currentNavLink, setCurrentNavLink ] = useState( "Centenary" );
-
   const { t, i18n } = useTranslation(['translation', 'anniversary']);
   const changeLanguage = ev => {
     i18n.changeLanguage(ev.target.value); /* Sends i18n the code of the language to change and the function in i18n.js takes this code and sets
                               it to the local storage variable. The language detector detects this and translates the text that
                               is either in a "t" function or inside a "Trans" component */
+    setCurrentLang(ev.target.value);
   };
+
+  const [ sidebarCollapsed, setSidebarCollapsed ] = usePersistedState( 'sidebarCollapsed', false );
+  const toggleSidebar = () => setSidebarCollapsed( prevValue => !prevValue );
+
+  const [ currentNavLink, setCurrentNavLink ] = useState( "Centenary" );
+  const [ currentLang, setCurrentLang ] = useState( i18n.language );
+
 
   const [ anniversaryYear, setAnniversaryYear ] = useState( new Date().getFullYear() + 1 );
 
   const [ responseObj, setResponseObj ] = useState({});
   const [ litEvents, setLitEvents ] = useState([]);
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_ENDPOINT_URL}?YEAR=${anniversaryYear}&LOCALE=${i18n.language}`)
+    fetch(`${process.env.REACT_APP_ENDPOINT_URL}?YEAR=${anniversaryYear}&LOCALE=${currentLang}`)
         .then(response => response.json())
         .then(responseData => {
             setResponseObj(responseData);
@@ -45,7 +48,7 @@ const App = () => {
     return () => {
       setResponseObj({});
     }
-  }, [setResponseObj,anniversaryYear,i18n]);
+  }, [setResponseObj,anniversaryYear,currentLang]);
 
 
   return (
@@ -94,7 +97,7 @@ const App = () => {
             <form className="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
               <label>
                 <span>{t("choose-language")}</span>
-                <select onChange={changeLanguage} value={i18n.language} className="form-control bg-dark text-white border-0 small ml-2">
+                <select onChange={changeLanguage} value={currentLang} className="form-control bg-dark text-white border-0 small ml-2">
                   <option value="en">English</option>
                   <option value="it">Italiano</option>
                 </select>

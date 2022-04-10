@@ -15,5 +15,6 @@
     "death" : "morte",
     "burial" : "sepoltura",
     "main-shrine" : "santuario principale",
-    "nations" : "nazioni"
+    "nations" : "nazioni",
+    "no-results": "Non ci sono risultati"
 }

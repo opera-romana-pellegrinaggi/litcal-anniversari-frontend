@@ -1,21 +1,12 @@
 import ReadMoreReact from 'read-more-react'
 import { useTranslation } from 'react-i18next'
 
-const MONTH = [
-    "null_value",
-    "Gennaio",
-    "Febbraio",
-    "Marzo",
-    "Aprile",
-    "Maggio",
-    "Giugno",
-    "Luglio",
-    "Agosto",
-    "Settembre",
-    "Ottobre",
-    "Novembre",
-    "Dicembre"
-];
+const getMonth = (month, locale) => {
+    var objDate = new Date();
+    objDate.setDate(15);
+    objDate.setMonth(month-1);
+    return objDate.toLocaleString(locale, { month: "long" });
+}
 
 const AnniversaryEventsTable = props => {
     const { t, i18n } = useTranslation(['translation', 'anniversary']);
@@ -39,26 +30,26 @@ const AnniversaryEventsTable = props => {
                     </tr>
                 </thead>
                 <tbody>
-            { LitEvents.filter( el => el.anniversary === currentNavLink.toUpperCase() ).map((el,i) => {
+            { LitEvents.filter( el => el.anniversary.toUpperCase() === currentNavLink.toUpperCase() ).map((el,i) => {
                 return (
                     <tr key={i}>
-                        <td>{el.soggetto}</td>
-                        <td>{el.ricorrenza}</td>
+                        <td>{el.subject}</td>
+                        <td>{el.anniversaryType}</td>
                         <td>
-                            <div>{el.anno}</div>
+                            <div>{el.year}</div>
                             <div>({el.yearDiff + ' ' + (el.yearDiff > 1 ? "anni" : "anno")})</div>
                         </td>
-                        <td>{el.giorno + ' ' + MONTH[el.mese]}</td>
+                        <td>{el.giorno + ' ' + getMonth(el.month, i18n.language)}</td>
                         <td>
-                            <div><b>{t("birth").toUpperCase()}:</b> {el.luogoNascita || ""}</div>
-                            <div><b>{t("death").toUpperCase()}:</b> {el.luogoMorte || ""}</div>
-                            <div><b>{t("burial").toUpperCase()}:</b> {el.luogoSepoltura || ""}</div>
-                            <div><b>{t("main-shrine").toUpperCase()}:</b> {el.santuarioPrincipale || ""}</div>
-                            <div><b>{t("nations").toUpperCase()}:</b> {el.luoghi || ""}</div>
+                            <div><b>{t("birth").toUpperCase()}:</b> {el.placeOfBirth || ""}</div>
+                            <div><b>{t("death").toUpperCase()}:</b> {el.placeOfDeath || ""}</div>
+                            <div><b>{t("burial").toUpperCase()}:</b> {el.placeOfBurial || ""}</div>
+                            <div><b>{t("main-shrine").toUpperCase()}:</b> {el.mainShrine || ""}</div>
+                            <div><b>{t("nations").toUpperCase()}:</b> {el.places || ""}</div>
                         </td>
-                        <td>{el.ambito.map((el,i) => { return <div key={i} className="text-center">{el}</div>})}</td>
-                        <td><ReadMoreReact key={el.idx} text={el.note || ""} /></td>
-                        <td>{el.patrono}</td>
+                        <td>{el.areaOfInterest.map((aoi,i) => { return <div key={i} className="text-center">{aoi}</div>})}</td>
+                        <td><ReadMoreReact key={el.idx} text={el.notes || ""} /></td>
+                        <td>{el.patronage}</td>
                     </tr>
                 )
             }) }
@@ -68,7 +59,7 @@ const AnniversaryEventsTable = props => {
         );
     } else {
         return (
-            <div style={{color:"DarkRed",fontWeight:"bold",padding:"20px",textAlign:"center"}}>Non ci sono risultati</div>
+            <div style={{color:"DarkRed",fontWeight:"bold",padding:"20px",textAlign:"center"}}>{t('no-results')}</div>
         )
     }
 }

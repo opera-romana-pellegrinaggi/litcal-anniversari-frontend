@@ -15,5 +15,6 @@
     "death" : "death",
     "burial" : "burial",
     "main-shrine" : "main shrine",
-    "nations" : "nations"
+    "nations" : "nations",
+    "no-results": "There are no results"
 }
