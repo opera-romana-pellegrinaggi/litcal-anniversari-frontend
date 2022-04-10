@@ -1,0 +1,19 @@
+{
+    "calculate-anniversaries-for-year": "Calculate anniversaries for the year",
+    "anniversary-calculator-saints-universal-calendar": "Anniversary Calculator for Saints of the Universal Calendar",
+    "anniversaries-for-year": "{{currentNavLink}} anniversaries for the year {{anniversaryYear}}",
+    "choose-language": "Choose language",
+    "subject" : "subject",
+    "anniversary" : "anniversary",
+    "year" : "year",
+    "festivity-day" : "memorial date",
+    "places" : "places",
+    "orp-sections" : "ORP sections",
+    "notes" : "notes",
+    "patronage" : "patronage",
+    "birth" : "birth",
+    "death" : "death",
+    "burial" : "burial",
+    "main-shrine" : "main shrine",
+    "nations" : "nations"
+}

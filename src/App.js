@@ -3,63 +3,31 @@ import { Button, Navbar, Nav, ButtonGroup } from 'react-bootstrap'
 import usePersistedState from 'use-persisted-state-hook'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleRight, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons'
-import AnniversaryEventsTable from './components/AnniversaryEventsTable'
+import { useTranslation } from 'react-i18next'
 
+import AnniversaryEventsTable from './components/AnniversaryEventsTable'
 import logo from './assets/images/logo-orp.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/css/sb-admin-2.css'
 import './App.css'
+import './i18n'
+import Anniversary from './Anniversary'
 
-const APP_VERSION = "0.2";
 
-const ANNIVERSARY = {
-  "CENTENARIO"    : 100,
-  "ONICE"         : 95,
-  "GRANITO"       : 90,
-  "MARMO"         : 85,
-  "QUERCIA"       : 80,
-  "PLATINO"       : 75,
-  "FERRO"         : 70,
-  "PIETRA"        : 65,
-  "DIAMANTE"      : 60,
-  "SMERALDO"      : 55,
-  "ORO"           : 50,
-  "ZAFFIRO"       : 45,
-  "RUBINO"        : 40,
-  "CORALLO"       : 35,
-  "PERLA"         : 30,
-  "ARGENTO"       : 25,
-  "PORCELLANA"    : 20,
-  "CRISTALLO"     : 15,
-  "STAGNO"        : 10,
-  "LEGNO"         : 5,
-  "CARTA"         : 1
-};
-
-const RECURRING = [
-  "STAGNO",
-  "PORCELLANA",
-  "ARGENTO",
-  "PERLA",
-  "RUBINO",
-  "ORO",
-  "DIAMANTE",
-  "FERRO",
-  "PLATINO",
-  "QUERCIA",
-  "GRANITO",
-  "CENTENARIO"
-];
-
+const APP_VERSION = "0.3";
 
 const App = () => {
 
   const [ sidebarCollapsed, setSidebarCollapsed ] = usePersistedState( 'sidebarCollapsed', false );
   const toggleSidebar = () => setSidebarCollapsed( prevValue => !prevValue );
 
-  const [ currentNavLink, setCurrentNavLink ] = useState( 'CENTENARIO' );
-  const updateCurrentNavLink = val => {
-    setCurrentNavLink(val);
+  const [ currentNavLink, setCurrentNavLink ] = useState( "Centenary" );
+
+  const { t, i18n } = useTranslation(['translation', 'anniversary']);
+  const changeLanguage = ev => {
+    i18n.changeLanguage(ev.target.value); /* Sends i18n the code of the language to change and the function in i18n.js takes this code and sets
+                              it to the local storage variable. The language detector detects this and translates the text that
+                              is either in a "t" function or inside a "Trans" component */
   };
 
   const [ anniversaryYear, setAnniversaryYear ] = useState( new Date().getFullYear() + 1 );
@@ -67,7 +35,7 @@ const App = () => {
   const [ responseObj, setResponseObj ] = useState({});
   const [ litEvents, setLitEvents ] = useState([]);
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_ENDPOINT_URL}?YEAR=${anniversaryYear}`)
+    fetch(`${process.env.REACT_APP_ENDPOINT_URL}?YEAR=${anniversaryYear}&LOCALE=${i18n.language}`)
         .then(response => response.json())
         .then(responseData => {
             setResponseObj(responseData);
@@ -77,7 +45,7 @@ const App = () => {
     return () => {
       setResponseObj({});
     }
-  }, [setResponseObj,anniversaryYear]);
+  }, [setResponseObj,anniversaryYear,i18n]);
 
 
   return (
@@ -89,8 +57,19 @@ const App = () => {
               <div className="sidebar-brand-text mx-3">Centro<br />Pastorale<br />ORP</div>
           </Navbar.Brand>
           <ButtonGroup className={"w-100 anniversaryCategories mb-2"} vertical>
-            {Object.keys(ANNIVERSARY).map((key, i) => {
-              return(<Button variant="outline-light" size="sm" onClick={(ev) => updateCurrentNavLink(key)} active={key === currentNavLink} disabled={litEvents.filter( el => el.anniversario === key ).length === 0} key={i} className={litEvents.filter( el => el.anniversario === key ).length === 0 ? 'bg-gradient-secondary' : ''}><div className={RECURRING.includes(key) ? "font-weight-bold" : "font-weight-normal"}><span>{ANNIVERSARY[key]}°</span><span className={sidebarCollapsed ? "d-none" : ""}> - {key}</span><span> ({litEvents.filter( el => el.anniversario === key ).length})</span></div></Button>)
+            {Object.keys(Anniversary).map((key, i) => {
+              const anniv = Anniversary[key];
+              const lclName = t(anniv.name, { ns: 'anniversary' });
+              const latinTerm = t(anniv.latinTerm, { ns: 'anniversary' });
+              return(
+                <Button variant="outline-light" size="sm" onClick={() => setCurrentNavLink(key)} title={`latinTerm = ${latinTerm}, key = ${key}, currentNavLink = ${currentNavLink}`} active={key === currentNavLink} disabled={litEvents.filter( el => (el.anniversary.toUpperCase() === anniv.name.toUpperCase() || el.anniversary.toUpperCase() === lclName.toUpperCase() ) ).length === 0} key={i} className={litEvents.filter( el => (el.anniversary.toUpperCase() === anniv.name.toUpperCase() || el.anniversary.toUpperCase() === lclName.toUpperCase() ) ).length === 0 ? 'bg-gradient-secondary' : ''}>
+                  <div className={anniv.recurring ? "font-weight-bold" : "font-weight-normal"}>
+                    <span>{anniv.year}°</span>
+                    <span className={sidebarCollapsed ? "d-none" : ""}> - {lclName}</span>
+                    <span> ({litEvents.filter( el => (el.anniversary.toUpperCase() === anniv.name.toUpperCase() || el.anniversary.toUpperCase() === lclName.toUpperCase() )).length})</span>
+                  </div>
+                </Button>
+              )
             })}
           </ButtonGroup>
           {/* Sidebar toggle */}
@@ -105,16 +84,26 @@ const App = () => {
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
           <Navbar className="navbar-light bg-white topbar mb-2 static-top shadow justify-content-between">
-            <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
+            <form className="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
               <label>
-                <span>CALCOLARE GLI ANNIVERSARI PER L'ANNO </span>
+                <span className="d-none d-md-inline">{t("calculate-anniversaries-for-year")} </span>
+                <span className="d-sm-inline d-md-none">{t("year").toUpperCase()} </span>
                 <input type="number" min="1969" max="9999" className="form-control bg-dark text-white border-0 small ml-2" value={anniversaryYear} onChange={ev => setAnniversaryYear(ev.target.value)} />
+              </label>
+            </form>
+            <form className="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
+              <label>
+                <span>{t("choose-language")}</span>
+                <select onChange={changeLanguage} value={i18n.language} className="form-control bg-dark text-white border-0 small ml-2">
+                  <option value="en">English</option>
+                  <option value="it">Italiano</option>
+                </select>
               </label>
             </form>
           </Navbar>
           <div className="container-fluid anniversary-calculator">
-            <h2 className="text-center">Calcolatrice degli Anniversari per i Santi del Calendario Universale</h2>
-            <h4 className="text-center">anniversari {currentNavLink} nell'anno {anniversaryYear}</h4>
+            <h2 className="text-center">{t("anniversary-calculator-saints-universal-calendar")}</h2>
+            <h4 className="text-center">{t("anniversaries-for-year", { currentNavLink: t(currentNavLink.toLowerCase(), { ns: 'anniversary' }).toUpperCase(), anniversaryYear: anniversaryYear })}</h4>
             <AnniversaryEventsTable responseObj={responseObj} currentNavLink={currentNavLink} />
           </div>
         </div>

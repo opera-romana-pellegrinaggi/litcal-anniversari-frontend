@@ -1,4 +1,5 @@
 import ReadMoreReact from 'read-more-react'
+import { useTranslation } from 'react-i18next'
 
 const MONTH = [
     "null_value",
@@ -17,7 +18,7 @@ const MONTH = [
 ];
 
 const AnniversaryEventsTable = props => {
-
+    const { t, i18n } = useTranslation(['translation', 'anniversary']);
     const { responseObj, currentNavLink } = props;
     const { LitEvents } = { ...responseObj };
     if( LitEvents !== undefined ) {
@@ -25,9 +26,20 @@ const AnniversaryEventsTable = props => {
         return(
             <div className="ricorrenzeTblWrapper">
             <table className="ricorrenzeTbl position-relative">
-                <thead><tr><th>SOGGETTO</th><th>RICORRENZA</th><th>ANNO</th><th>MEMORIA LITURGICA</th><th>LUOGHI</th><th>SETTORI ORP</th><th>NOTE</th><th>PATRONATO</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th>{t("subject").toUpperCase()}</th>
+                        <th>{t("anniversary").toUpperCase()}</th>
+                        <th>{t("year").toUpperCase()}</th>
+                        <th>{t("festivity-day").toUpperCase()}</th>
+                        <th>{t("places").toUpperCase()}</th>
+                        <th>{t("orp-sections").toUpperCase()}</th>
+                        <th>{t("notes").toUpperCase()}</th>
+                        <th>{t("patronage").toUpperCase()}</th>
+                    </tr>
+                </thead>
                 <tbody>
-            { LitEvents.filter( el => el.anniversario === currentNavLink ).map((el,i) => {
+            { LitEvents.filter( el => el.anniversary === currentNavLink.toUpperCase() ).map((el,i) => {
                 return (
                     <tr key={i}>
                         <td>{el.soggetto}</td>
@@ -38,11 +50,11 @@ const AnniversaryEventsTable = props => {
                         </td>
                         <td>{el.giorno + ' ' + MONTH[el.mese]}</td>
                         <td>
-                            <div><b>NASCITA:</b> {el.luogoNascita || ""}</div>
-                            <div><b>MORTE:</b> {el.luogoMorte || ""}</div>
-                            <div><b>SEPOLTURA:</b> {el.luogoSepoltura || ""}</div>
-                            <div><b>SANTUARIO PRINCIPALE:</b> {el.santuarioPrincipale || ""}</div>
-                            <div><b>NAZIONI:</b> {el.luoghi || ""}</div>
+                            <div><b>{t("birth").toUpperCase()}:</b> {el.luogoNascita || ""}</div>
+                            <div><b>{t("death").toUpperCase()}:</b> {el.luogoMorte || ""}</div>
+                            <div><b>{t("burial").toUpperCase()}:</b> {el.luogoSepoltura || ""}</div>
+                            <div><b>{t("main-shrine").toUpperCase()}:</b> {el.santuarioPrincipale || ""}</div>
+                            <div><b>{t("nations").toUpperCase()}:</b> {el.luoghi || ""}</div>
                         </td>
                         <td>{el.ambito.map((el,i) => { return <div key={i} className="text-center">{el}</div>})}</td>
                         <td><ReadMoreReact key={el.idx} text={el.note || ""} /></td>
