@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import ReactDOM from 'react-dom'
+import * as ReactDOM from 'react-dom/client'
 import { I18nextProvider } from 'react-i18next'
 
 import './index.css'
@@ -11,15 +11,17 @@ import i18n from './i18n'
 const baseUrl = process.env.PUBLIC_URL;
 console.log('baseUrl = ' + baseUrl);
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+
+root.render(
   <React.StrictMode>
     <Suspense fallback="loading">
       <I18nextProvider i18n={i18n}>
         <App />
       </I18nextProvider>
     </Suspense>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
