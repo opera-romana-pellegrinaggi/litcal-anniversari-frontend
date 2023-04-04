@@ -14,7 +14,7 @@ import './i18n'
 import Anniversary from './Anniversary'
 
 
-const APP_VERSION = "0.3";
+const APP_VERSION = "0.3.1";
 
 const App = () => {
 
