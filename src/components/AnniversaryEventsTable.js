@@ -41,9 +41,11 @@ const AnniversaryEventsTable = props => {
                         </td>
                         <td>
                             <div>{el.memorialDay + ' ' + getMonth(el.memorialMonth, i18n.language)}</div>
+                            <hr style={{height:'2px',backgroundColor:'black'}} />
                             {
                                 (el.eventDay !== null && el.eventMonth !== null)
-                                && <div>{el.eventDay + ' ' + getMonth(el.eventMonth, i18n.language)}</div>
+                                ? <div>{el.eventDay + ' ' + getMonth(el.eventMonth, i18n.language)}</div>
+                                : <div>N/A</div>
                             }
                         </td>
                         <td>
