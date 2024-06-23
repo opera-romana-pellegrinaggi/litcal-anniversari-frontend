@@ -18,7 +18,8 @@
     "main-shrine": "santuario principale",
     "nations": "nazioni",
     "no-results": "Non ci sono risultati",
-    "yearWithCount": "",
-    "yearWithCount_plural": "",
-    "read-more": ""
+    "yearWithCount_0": "anno",
+    "yearWithCount_1": "anni",
+    "yearWithCount_2": "anni",
+    "read-more": "leggi di più"
 }
