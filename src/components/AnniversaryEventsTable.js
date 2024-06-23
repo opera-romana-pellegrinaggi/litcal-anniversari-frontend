@@ -37,7 +37,7 @@ const AnniversaryEventsTable = props => {
                         <td>{el.anniversaryTypeLcl}</td>
                         <td>
                             <div>{el.year}</div>
-                            <div>{t('yearWithCount', {count: el.yearDiff})}</div>
+                            <div>({t('yearWithCount', {count: el.yearDiff})})</div>
                         </td>
                         <td>
                             <div>{el.memorialDay + ' ' + getMonth(el.memorialMonth, i18n.language)}</div>
