@@ -21,5 +21,7 @@
     "yearWithCount_one": "{{count}} anno",
     "yearWithCount_many": "{{count}} di anni",
     "yearWithCount_other": "{{count}} anni",
-    "read-more": "leggi di più"
+    "read-more": "leggi di più",
+    "notice": "",
+    "english-strings-used": ""
 }

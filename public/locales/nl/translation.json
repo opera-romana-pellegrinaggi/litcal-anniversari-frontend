@@ -20,5 +20,7 @@
     "main-shrine": "hoofdschrijn",
     "nations": "landen",
     "read-more": "lees meer",
-    "no-results": "Er zijn geen resultaten"
+    "no-results": "Er zijn geen resultaten",
+    "notice": "",
+    "english-strings-used": ""
 }

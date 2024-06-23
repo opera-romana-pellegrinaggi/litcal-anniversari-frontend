@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Navbar, Nav, ButtonGroup } from 'react-bootstrap'
+import { Button, Navbar, Nav, ButtonGroup, Toast, ToastContainer } from 'react-bootstrap'
 import usePersistedState from 'use-persisted-state-hook'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDoubleRight, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDoubleRight, faAngleDoubleLeft, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
 import { useTranslation } from 'react-i18next'
 
 import AnniversaryEventsTable from './components/AnniversaryEventsTable'
@@ -39,13 +39,18 @@ const App = () => {
 
   const [ responseObj, setResponseObj ] = useState({});
   const [ litEvents, setLitEvents ] = useState([]);
+  const [ englishResultsForPartialTranslation, setEnglishResultsForPartialTranslation ] = useState(false);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_ENDPOINT_URL}?YEAR=${anniversaryYear}&LOCALE=${currentLang}`)
         .then(response => response.json())
         .then(responseData => {
             setResponseObj(responseData);
-            let { LitEvents } = { ...responseData };
+            // The actual events array is under the LitEvents key in the response object
+            let { LitEvents, Messages } = responseData;
             setLitEvents(LitEvents);
+            if (Messages.includes('English results were used for this incomplete translation')) {
+              setEnglishResultsForPartialTranslation(true);
+            }
         })
     return () => {
       setResponseObj({});
@@ -98,10 +103,10 @@ const App = () => {
             </form>
             <form className="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
               <label>
-                <span>{t("choose-language")}</span>
-                <select onChange={changeLanguage} value={currentLang} className="form-control bg-dark text-white border-0 small ml-2">
+                <span key="chooseLanguageLabel">{t("choose-language")}</span>
+                <select key="languageSelect" onChange={changeLanguage} value={currentLang} className="form-control bg-dark text-white border-0 small ml-2">
                   {supportedLngs.map((value, key) => {
-                    return <option value={value} title={englishLanguageNames.of(value)}>{languageNames.of(value)}</option>
+                    return <option key={key} value={value} title={englishLanguageNames.of(value)}>{languageNames.of(value)}</option>
                   })}
                 </select>
               </label>
@@ -114,6 +119,17 @@ const App = () => {
           </div>
         </div>
       </div>
+      {englishResultsForPartialTranslation &&
+        <ToastContainer className="p-3" position="bottom-end" style={{ zIndex: 1 }}>
+          <Toast className="text-bg-warning">
+            <Toast.Header>
+              <FontAwesomeIcon icon={faTriangleExclamation} className="me-2" />
+              <strong className="me-auto">{t('notice')}</strong>
+            </Toast.Header>
+            <Toast.Body>{t('english-strings-used')}</Toast.Body>
+          </Toast>
+        </ToastContainer>
+      }
     </div>
   );
 }

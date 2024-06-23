@@ -21,5 +21,7 @@
     "main-shrine": "sanctuaire principal",
     "nations": "nations",
     "read-more": "lire la suite",
-    "no-results": "Il n'y a pas de résultats"
+    "no-results": "Il n'y a pas de résultats",
+    "notice": "",
+    "english-strings-used": ""
 }

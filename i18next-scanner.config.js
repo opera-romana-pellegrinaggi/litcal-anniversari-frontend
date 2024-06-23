@@ -39,6 +39,7 @@ module.exports = {
     },
     metadata: {},
     allowDynamicKeys: false,
+    compatibilityJSON: 'v4'
   },
   transform: function customTransform(file, enc, done) {
     const parser = this.parser;
