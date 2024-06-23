@@ -5,7 +5,7 @@ var scanner = require('i18next-scanner');
 gulp.task('i18next', function() {
     return gulp.src(['src/**/*.{js,html}'])
         .pipe(scanner({
-            lngs: ['en', 'it'], // supported languages ['es', 'de', 'fr', 'pt', 'la', 'nl']
+            lngs: ['en', 'it', 'es', 'de', 'fr', 'pt', 'nl'], // supported languages [, 'la',]
             ns: ['translation', 'anniversary'],
             resource: {
                 // the source path is relative to the current working directory

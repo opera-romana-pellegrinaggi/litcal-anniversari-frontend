@@ -24,6 +24,7 @@ const App = () => {
                               it to the local storage variable. The language detector detects this and translates the text that
                               is either in a "t" function or inside a "Trans" component */
     setCurrentLang(ev.target.value);
+    setLanguageNames(new Intl.DisplayNames([ev.target.value], { type: "language" }));
   };
 
   const [ sidebarCollapsed, setSidebarCollapsed ] = usePersistedState( 'sidebarCollapsed', false );
@@ -31,8 +32,9 @@ const App = () => {
 
   const [ currentNavLink, setCurrentNavLink ] = useState( "Centenary" );
   const [ currentLang, setCurrentLang ] = useState( i18n.language );
-
-
+  const [ languageNames, setLanguageNames ] = useState(new Intl.DisplayNames([i18n.language], { type: "language" }));
+  const englishLanguageNames = new Intl.DisplayNames(['en'], { type: "language" });
+  const supportedLngs = ['en', 'es', 'it', 'fr', 'de', 'pt', 'nl'];
   const [ anniversaryYear, setAnniversaryYear ] = useState( new Date().getFullYear() + 1 );
 
   const [ responseObj, setResponseObj ] = useState({});
@@ -98,8 +100,9 @@ const App = () => {
               <label>
                 <span>{t("choose-language")}</span>
                 <select onChange={changeLanguage} value={currentLang} className="form-control bg-dark text-white border-0 small ml-2">
-                  <option value="en">English</option>
-                  <option value="it">Italiano</option>
+                  {supportedLngs.map((value, key) => {
+                    return <option value={value} title={englishLanguageNames.of(value)}>{languageNames.of(value)}</option>
+                  })}
                 </select>
               </label>
             </form>

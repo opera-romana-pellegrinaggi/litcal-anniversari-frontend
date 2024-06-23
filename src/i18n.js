@@ -1,7 +1,6 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
-
 import Backend from 'i18next-http-backend';
 //To load the translation files
 
@@ -16,7 +15,7 @@ i18n
   .init({
     debug: process.env.NODE_ENV === 'production' ? false : true,
     fallbackLng: 'en',
-    whitelist: ['en', 'it'], //Array of abbrevations of the languages
+    supportedLngs: ['en', 'it', 'es', 'fr', 'de', 'pt', 'nl'], //Array of abbrevations of the languages
     interpolation: {
       escapeValue: false,
     },
@@ -28,8 +27,7 @@ i18n
     },
     detection: {
       order: ['localStorage'],
-      lookupLocalStorage: 'lng',
-      checkWhitelist: true
+      lookupLocalStorage: 'lng'
     },
     saveMissing: true,
     saveMissingTo: 'all',

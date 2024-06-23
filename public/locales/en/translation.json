@@ -18,7 +18,7 @@
     "main-shrine": "main shrine",
     "nations": "nations",
     "no-results": "There are no results",
-    "yearWithCount": "",
-    "yearWithCount_plural": "",
-    "read more": ""
+    "yearWithCount": "year",
+    "yearWithCount_plural": "years",
+    "read-more": "read more"
 }

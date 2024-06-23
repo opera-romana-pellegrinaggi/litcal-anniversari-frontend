@@ -54,7 +54,7 @@ const AnniversaryEventsTable = props => {
                             <div><b>{t("nations").toUpperCase()}:</b> {el.places || ""}</div>
                         </td>
                         <td>{el.areaOfInterestLcl.map((aoi,i) => { return <div key={i} className="text-center">{aoi}</div>})}</td>
-                        <td><ReadMoreReact key={el.idx} text={el.notes || ""} readMoreText={t("read more")} /></td>
+                        <td><ReadMoreReact key={el.idx} text={el.notes || ""} readMoreText={t("read-more")} /></td>
                         <td>{el.patronage}</td>
                     </tr>
                 )

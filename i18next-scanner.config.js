@@ -17,7 +17,7 @@ module.exports = {
     attr: false,
     func: false,
     trans: false,
-    lngs: ["en", "it"], //["es", "de", , "pt-BR"]
+    lngs: ["en", "it", "es", "fr", "de", "pt", "nl"],
     ns: ["translation","anniversary"],
     defaultLng: "en",
     defaultNs: "translation",
@@ -50,7 +50,7 @@ module.exports = {
           return "";
         }
       },
-      lngs: ["en", "es"], //["de", "it", "pt-BR"]
+      lngs: ["en", "it", "es", "fr", "de", "pt", "nl"],
       resource: {
         loadPath: "public/locales/{{lng}}/{{ns}}.json",
         savePath: "public/locales/{{lng}}/{{ns}}.json",
