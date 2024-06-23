@@ -17,14 +17,20 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Use Node.js
+    - name: Enable Corepack
+      run: corepack enable
+
+    - name: Use Node.js 20.x
       uses: actions/setup-node@v4
       with:
         node-version: 20.x
+        cache: 'yarn'
 
-    - name: Build
-      run: |
-        i18next-scanner
+    - name: Install dependencies
+      run: yarn install --immutable
+
+    - name: Scan for new translation strings
+      run: i18next-scanner
 
     - name: Push changes  # push the output folder to your repo
       uses: actions-x/commit@v6
