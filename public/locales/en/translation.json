@@ -20,5 +20,6 @@
     "no-results": "There are no results",
     "yearWithCount_one": "{{count}} year",
     "yearWithCount_other": "{{count}} years",
-    "read-more": "read more"
+    "read-more": "read more",
+    "yearWithCount_many": "{{count}} years"
 }
