@@ -22,7 +22,7 @@ const AnniversaryEventsTable = props => {
                         <th>{t("subject").toUpperCase()}</th>
                         <th>{t("anniversary").toUpperCase()}</th>
                         <th>{t("year").toUpperCase()}</th>
-                        <th>{t("festivity-day").toUpperCase()}</th>
+                        <th>{t("liturgical-memorial").toUpperCase()} / {t("event-date").toUpperCase()}</th>
                         <th>{t("places").toUpperCase()}</th>
                         <th>{t("orp-sections").toUpperCase()}</th>
                         <th>{t("notes").toUpperCase()}</th>
@@ -34,12 +34,18 @@ const AnniversaryEventsTable = props => {
                 return (
                     <tr key={i}>
                         <td>{el.subject}</td>
-                        <td>{el.anniversaryType}</td>
+                        <td>{el.anniversaryTypeLcl}</td>
                         <td>
                             <div>{el.year}</div>
-                            <div>({el.yearDiff + ' ' + (el.yearDiff > 1 ? "anni" : "anno")})</div>
+                            <div>{t('yearWithCount', {count: el.yearDiff})}</div>
                         </td>
-                        <td>{el.giorno + ' ' + getMonth(el.month, i18n.language)}</td>
+                        <td>
+                            <div>{el.memorialDay + ' ' + getMonth(el.memorialMonth, i18n.language)}</div>
+                            {
+                                (el.eventDay !== null && el.eventMonth !== null)
+                                && <div>{el.eventDay + ' ' + getMonth(el.eventMonth, i18n.language)}</div>
+                            }
+                        </td>
                         <td>
                             <div><b>{t("birth").toUpperCase()}:</b> {el.placeOfBirth || ""}</div>
                             <div><b>{t("death").toUpperCase()}:</b> {el.placeOfDeath || ""}</div>
@@ -47,8 +53,8 @@ const AnniversaryEventsTable = props => {
                             <div><b>{t("main-shrine").toUpperCase()}:</b> {el.mainShrine || ""}</div>
                             <div><b>{t("nations").toUpperCase()}:</b> {el.places || ""}</div>
                         </td>
-                        <td>{el.areaOfInterest.map((aoi,i) => { return <div key={i} className="text-center">{aoi}</div>})}</td>
-                        <td><ReadMoreReact key={el.idx} text={el.notes || ""} /></td>
+                        <td>{el.areaOfInterestLcl.map((aoi,i) => { return <div key={i} className="text-center">{aoi}</div>})}</td>
+                        <td><ReadMoreReact key={el.idx} text={el.notes || ""} readMoreText={t("read more")} /></td>
                         <td>{el.patronage}</td>
                     </tr>
                 )
