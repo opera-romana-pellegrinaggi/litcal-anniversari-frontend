@@ -30,7 +30,7 @@ jobs:
       run: yarn install --immutable
 
     - name: Scan for new translation strings
-      run: i18next-scanner
+      run: yarn dlx i18next-scanner
 
     - name: Push changes  # push the output folder to your repo
       uses: actions-x/commit@v6

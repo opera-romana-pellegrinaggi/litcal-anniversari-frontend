@@ -60,7 +60,6 @@
     "chalk": "^4",
     "eslint": "^8.1.0",
     "eslint-config-react-app": "^7.0.1",
-    "gulp": "^5.0.0",
     "i18next-scanner": "^4.5.0",
     "postcss": "^8.4.38",
     "postcss-flexbugs-fixes": "^5.0.2",
