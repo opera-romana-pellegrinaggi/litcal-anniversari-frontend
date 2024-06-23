@@ -50,7 +50,7 @@ module.exports = {
           return "";
         }
       },
-      lngs: ["en", "es", "de", "it", "pt-BR"],
+      lngs: ["en", "es"], //["de", "it", "pt-BR"]
       resource: {
         loadPath: "public/locales/{{lng}}/{{ns}}.json",
         savePath: "public/locales/{{lng}}/{{ns}}.json",
@@ -93,17 +93,9 @@ module.exports = {
           "strong",
           "i",
           "p",
-          "vatican",
-          "github",
-          "mass",
-          "osc",
-          "website",
-          "app",
           "a",
           "kbd",
-          "code",
-          "footer",
-          "githubicon",
+          "code"
         ], // Which nodes are allowed to be kept in translations during defaultValue generation of <Trans>.
 
         // https://github.com/acornjs/acorn/tree/master/acorn#interface
