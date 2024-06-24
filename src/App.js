@@ -119,17 +119,16 @@ const App = () => {
           </div>
         </div>
       </div>
-      {englishResultsForPartialTranslation &&
-        <ToastContainer className="p-3" position="bottom-end" style={{ zIndex: 1 }}>
-          <Toast className="text-bg-warning">
-            <Toast.Header>
-              <FontAwesomeIcon icon={faTriangleExclamation} className="me-2" />
-              <strong className="me-auto">{t('notice')}</strong>
-            </Toast.Header>
-            <Toast.Body>{t('english-strings-used')}</Toast.Body>
-          </Toast>
-        </ToastContainer>
-      }
+
+      <ToastContainer className="p-3" position="bottom-end" style={{ zIndex: 1 }}>
+        <Toast show={englishResultsForPartialTranslation} onClose={() => setEnglishResultsForPartialTranslation(false)} className="text-bg-warning">
+          <Toast.Header>
+            <FontAwesomeIcon icon={faTriangleExclamation} className="me-2" />
+            <strong className="me-auto">{t('notice')}</strong>
+          </Toast.Header>
+          <Toast.Body>{t('english-strings-used')}</Toast.Body>
+        </Toast>
+      </ToastContainer>
     </div>
   );
 }
