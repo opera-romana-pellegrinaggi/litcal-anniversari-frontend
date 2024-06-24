@@ -22,6 +22,6 @@
     "nations": "nations",
     "read-more": "lire la suite",
     "no-results": "Il n'y a pas de résultats",
-    "notice": "",
-    "english-strings-used": ""
+    "notice": "Avertissement",
+    "english-strings-used": "Certaines chaînes utilisent l'anglais puisque la traduction est incomplète."
 }

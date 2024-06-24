@@ -21,6 +21,6 @@
     "yearWithCount_one": "{{count}} year",
     "yearWithCount_other": "{{count}} years",
     "read-more": "read more",
-    "notice": "",
-    "english-strings-used": ""
+    "notice": "Notice",
+    "english-strings-used": "Some strings use English since the translation is incomplete."
 }
