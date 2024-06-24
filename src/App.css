@@ -58,6 +58,10 @@
   padding: 6px 12px;
 }
 
+.ricorrenzeTbl th, .ucase {
+  text-transform: uppercase;
+}
+
 .ricorrenzeTbl thead tr {
   border-bottom: 3px groove white;
 }
@@ -83,6 +87,18 @@
 .read-more-button:hover {
   background:lightgray;
   color: gray;
+}
+
+#app_version {
+  position: absolute;
+  bottom: 0px;
+  width: inherit;
+  padding: .5rem;
+  text-align: center;
+  background-color: darkblue;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  font-family: "Segoe UI";
 }
 
 @media only screen and (max-width: 768px) {

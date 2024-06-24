@@ -14,7 +14,7 @@ import './i18n'
 import Anniversary from './Anniversary'
 
 
-const APP_VERSION = "0.3.1";
+const APP_VERSION = process.env.REACT_APP_VERSION;
 
 const App = () => {
 
@@ -76,7 +76,10 @@ const App = () => {
                   <div className={anniv.recurring ? "font-weight-bold" : "font-weight-normal"}>
                     <span>{anniv.year}°</span>
                     <span className={sidebarCollapsed ? "d-none" : ""}> - {lclName}</span>
-                    <span> ({litEvents.filter( el => (el.anniversary.toUpperCase() === anniv.name.toUpperCase() || el.anniversary.toUpperCase() === lclName.toUpperCase() )).length})</span>
+                    <span> ({litEvents.filter( el => (
+                        el.anniversary.toUpperCase() === anniv.name.toUpperCase()
+                        || el.anniversary.toUpperCase() === lclName.toUpperCase()
+                      )).length})</span>
                   </div>
                 </Button>
               )
@@ -88,7 +91,7 @@ const App = () => {
               <FontAwesomeIcon icon={sidebarCollapsed ? faAngleDoubleRight : faAngleDoubleLeft} />
               </Button>
           </Nav.Item>
-          <div id="app_version" key="app_version" style={{position:"absolute",bottom:"0px",width:"inherit",padding:".5rem",textAlign:"center",backgroundColor:"darkblue",color:"white",textShadow:"1px 1px 3px black",fontFamily:"Segoe UI"}}>Version {APP_VERSION}</div>
+          <div id="app_version" key="app_version">Version {APP_VERSION}</div>
       </Nav>
       {/* Sidebar end */}
       <div id="content-wrapper" className="d-flex flex-column">
