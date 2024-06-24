@@ -22,6 +22,6 @@
     "yearWithCount_many": "{{count}} di anni",
     "yearWithCount_other": "{{count}} anni",
     "read-more": "leggi di più",
-    "notice": "",
-    "english-strings-used": ""
+    "notice": "Avviso",
+    "english-strings-used": "Alcune stringhe utilizzano l'inglese visto che la traduzione è incompleta."
 }
