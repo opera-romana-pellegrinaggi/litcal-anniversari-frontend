@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Navbar, Nav, ButtonGroup, Toast, ToastContainer } from 'react-bootstrap'
-import usePersistedState from 'use-persisted-state-hook'
+import { faAngleDoubleLeft, faAngleDoubleRight, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDoubleRight, faAngleDoubleLeft, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image'
+import React, { useEffect, useState } from 'react'
+import { Button, ButtonGroup, Nav, Navbar, Toast, ToastContainer } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
+import usePersistedState from 'use-persisted-state-hook'
 
-import AnniversaryEventsTable from './components/AnniversaryEventsTable'
-import logo from './assets/images/logo-orp.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './assets/css/sb-admin-2.css'
-import './App.css'
-import './i18n'
 import Anniversary from './Anniversary'
+import './App.css'
+import './assets/css/sb-admin-2.css'
+import logo from './assets/images/logo-orp.png'
+import AnniversaryEventsTable from './components/AnniversaryEventsTable'
+import './i18n'
 
-
-const APP_VERSION = process.env.REACT_APP_VERSION;
+const APP_VERSION = process.env.NEXT_PUBLIC_APP_VERSION;
 
 const App = () => {
 
@@ -41,7 +41,7 @@ const App = () => {
   const [ litEvents, setLitEvents ] = useState([]);
   const [ englishResultsForPartialTranslation, setEnglishResultsForPartialTranslation ] = useState(false);
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_ENDPOINT_URL}?YEAR=${anniversaryYear}&LOCALE=${currentLang}`)
+    fetch(`${process.env.NEXT_PUBLIC_ENDPOINT_URL}?YEAR=${anniversaryYear}&LOCALE=${currentLang}`)
         .then(response => response.json())
         .then(responseData => {
             setResponseObj(responseData);
@@ -63,7 +63,7 @@ const App = () => {
       {/* Sidebar start */}
       <Nav className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion ${sidebarCollapsed ? "toggled" : ""}`} id="accordionSidebar">
           <Navbar.Brand as="div" className="sidebar-brand d-flex align-items-center justify-content-center" style={{position:"relative",top:"0",width:'100%',height:'auto'}}>
-              <div className="sidebar-brand-icon"><img alt="" src={logo} style={{height:'75px'}} /></div>
+              <div className="sidebar-brand-icon"><Image alt="" src={logo.src} height="75" width="65" /></div>
               <div className="sidebar-brand-text mx-3">Centro<br />Pastorale<br />ORP</div>
           </Navbar.Brand>
           <ButtonGroup className={"w-100 anniversaryCategories mb-2"} vertical>
