@@ -41,7 +41,6 @@ const App = () => {
   const [ litEvents, setLitEvents ] = useState([]);
   const [ englishResultsForPartialTranslation, setEnglishResultsForPartialTranslation ] = useState(false);
   useEffect(() => {
-    console.log(`fetching from ${process.env.NEXT_PUBLIC_ENDPOINT_URL}?YEAR=${anniversaryYear}&LOCALE=${currentLang}`);
     fetch(`${process.env.NEXT_PUBLIC_ENDPOINT_URL}?YEAR=${anniversaryYear}&LOCALE=${currentLang}`)
         .then(response => response.json())
         .then(responseData => {
@@ -51,6 +50,8 @@ const App = () => {
             setLitEvents(anniversary_events);
             if(responseData.hasOwnProperty('incomplete_translation')) {
               setEnglishResultsForPartialTranslation(responseData.incomplete_transation);
+            } else {
+              setEnglishResultsForPartialTranslation(false);
             }
         })
     return () => {
