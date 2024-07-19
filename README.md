@@ -39,7 +39,7 @@ Because there are two namespaces, there are also two translation components on o
 |----------------|----------------|
 | [![Translation status](https://translate.johnromanodorazio.com/widget/liturgical-calendar/anniversary-calculator-frontend/multi-auto.svg)](https://translate.johnromanodorazio.com/engage/liturgical-calendar/) | [![Translation status](https://translate.johnromanodorazio.com/widget/liturgical-calendar/anniversary-calculator-frontend2/multi-auto.svg)](https://translate.johnromanodorazio.com/engage/liturgical-calendar/) |
 
-However the data that is displayed for each anniversary event cannot be translated on the frontend application, this data comes from the backend and must be translated in the translation component for the backend. The backend also has two translation components, one for common strings (error messages and translations of the anniversary 'type'); the other for the actual data for each event.
+However the data that is displayed for each anniversary event cannot be translated on the frontend application, this data comes from the [backend](https://github.com/Liturgical-Calendar/LitCalAnniversaryCalculator) and must be translated in the translation components for the backend. The backend also has two translation components, one for common strings (error messages and translations of the anniversary 'type'); the other for the actual data for each event.
 
 | common | event data |
 |----------------|----------------|
