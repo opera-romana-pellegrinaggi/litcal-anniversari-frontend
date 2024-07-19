@@ -22,8 +22,7 @@ i18n
     ns: ['translation', 'anniversary'], //Names of the translation files
     defaultNS: 'translation',
     backend: {
-      loadPath: `${process.env.PUBLIC_URL}/locales/{{lng}}/{{ns}}.json`, //Path to the translation files
-      //addPath: `${process.env.PUBLIC_URL}/locales/add/{{lng}}/{{ns}}`,
+      loadPath: `${process.env.NEXT_PUBLIC_URL}/locales/{{lng}}/{{ns}}.json`
     },
     detection: {
       order: ['localStorage'],
