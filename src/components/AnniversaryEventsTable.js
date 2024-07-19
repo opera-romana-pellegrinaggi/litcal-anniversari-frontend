@@ -11,9 +11,10 @@ const getMonth = (month, locale) => {
 const AnniversaryEventsTable = props => {
     const { t, i18n } = useTranslation(['translation', 'anniversary']);
     const { responseObj, currentNavLink } = props;
-    const { LitEvents } = { ...responseObj };
-    if( LitEvents !== undefined ) {
+    const { anniversary_events } = responseObj;
+    if( anniversary_events !== undefined ) {
         console.log("currentNavLink = " + currentNavLink);
+        console.log(anniversary_events);
         return(
             <div className="ricorrenzeTblWrapper">
             <table className="ricorrenzeTbl position-relative">
@@ -30,32 +31,32 @@ const AnniversaryEventsTable = props => {
                     </tr>
                 </thead>
                 <tbody>
-            { LitEvents.filter( el => el.anniversary.toUpperCase() === currentNavLink.toUpperCase() ).map((el,i) => {
+            { anniversary_events.filter( el => el.anniversary.toUpperCase() === currentNavLink.toUpperCase() ).map((el,i) => {
                 return (
                     <tr key={i}>
                         <td>{el.subject}</td>
-                        <td className="ucase">{el.anniversaryTypeLcl}</td>
+                        <td className="ucase">{el.anniversary_type_lcl}</td>
                         <td>
                             <div>{el.year}</div>
-                            <div>({t('yearWithCount', {count: el.yearDiff})})</div>
+                            <div>({t('yearWithCount', {count: el.year_diff})})</div>
                         </td>
                         <td>
-                            <div>{el.memorialDay + ' ' + getMonth(el.memorialMonth, i18n.language)}</div>
+                            <div>{el.memorial_day + ' ' + getMonth(el.memorial_month, i18n.language)}</div>
                             <hr style={{height:'2px',backgroundColor:'black'}} />
                             {
-                                (el.eventDay !== null && el.eventMonth !== null)
-                                ? <div>{el.eventDay + ' ' + getMonth(el.eventMonth, i18n.language)}</div>
+                                (el.event_day !== null && el.event_month !== null)
+                                ? <div>{el.event_day + ' ' + getMonth(el.event_month, i18n.language)}</div>
                                 : <div>N/A</div>
                             }
                         </td>
                         <td>
-                            <div><b className="ucase">{t("birth")}:</b> {el.placeOfBirth || ""}</div>
-                            <div><b className="ucase">{t("death")}:</b> {el.placeOfDeath || ""}</div>
-                            <div><b className="ucase">{t("burial")}:</b> {el.placeOfBurial || ""}</div>
-                            <div><b className="ucase">{t("main-shrine")}:</b> {el.mainShrine || ""}</div>
+                            <div><b className="ucase">{t("birth")}:</b> {el.place_of_birth || ""}</div>
+                            <div><b className="ucase">{t("death")}:</b> {el.place_of_death || ""}</div>
+                            <div><b className="ucase">{t("burial")}:</b> {el.place_of_burial || ""}</div>
+                            <div><b className="ucase">{t("main-shrine")}:</b> {el.main_shrine || ""}</div>
                             <div><b className="ucase">{t("nations")}:</b> {el.places || ""}</div>
                         </td>
-                        <td>{el.areaOfInterestLcl.map((aoi,i) => { return <div key={i} className="text-center">{aoi}</div>})}</td>
+                        <td>{el.area_of_interest_lcl.map((aoi,i) => { return <div key={i} className="text-center">{aoi}</div>})}</td>
                         <td><ReadMoreReact key={el.idx} text={el.notes || ""} readMoreText={t("read-more")} /></td>
                         <td>{el.patronage}</td>
                     </tr>

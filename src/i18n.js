@@ -22,7 +22,7 @@ i18n
     ns: ['translation', 'anniversary'], //Names of the translation files
     defaultNS: 'translation',
     backend: {
-      loadPath: `${process.env.NEXT_PUBLIC_URL}/locales/{{lng}}/{{ns}}.json`
+      loadPath: process.env.NODE_ENV === 'production' ? `${process.env.NEXT_PUBLIC_URL}/locales/{{lng}}/{{ns}}.json` : './locales/{{lng}}/{{ns}}.json'
     },
     detection: {
       order: ['localStorage'],

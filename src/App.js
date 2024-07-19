@@ -41,15 +41,16 @@ const App = () => {
   const [ litEvents, setLitEvents ] = useState([]);
   const [ englishResultsForPartialTranslation, setEnglishResultsForPartialTranslation ] = useState(false);
   useEffect(() => {
+    console.log(`fetching from ${process.env.NEXT_PUBLIC_ENDPOINT_URL}?YEAR=${anniversaryYear}&LOCALE=${currentLang}`);
     fetch(`${process.env.NEXT_PUBLIC_ENDPOINT_URL}?YEAR=${anniversaryYear}&LOCALE=${currentLang}`)
         .then(response => response.json())
         .then(responseData => {
             setResponseObj(responseData);
-            // The actual events array is under the LitEvents key in the response object
-            let { LitEvents, Messages } = responseData;
-            setLitEvents(LitEvents);
-            if (Messages.includes('English results were used for this incomplete translation')) {
-              setEnglishResultsForPartialTranslation(true);
+            // The actual events array is under the anniversary_events key in the response object
+            let { anniversary_events } = responseData;
+            setLitEvents(anniversary_events);
+            if(responseData.hasOwnProperty('incomplete_translation')) {
+              setEnglishResultsForPartialTranslation(responseData.incomplete_transation);
             }
         })
     return () => {
