@@ -20,9 +20,10 @@ const App = () => {
 
   const { t, i18n } = useTranslation(['translation', 'anniversary']);
   const changeLanguage = ev => {
-    i18n.changeLanguage(ev.target.value); /* Sends i18n the code of the language to change and the function in i18n.js takes this code and sets
-                              it to the local storage variable. The language detector detects this and translates the text that
-                              is either in a "t" function or inside a "Trans" component */
+    /* Sends i18n the code of the language to change and the function in i18n.js takes this code and sets
+      it to the local storage variable. The language detector detects this and translates the text that
+      is either in a "t" function or inside a "Trans" component */
+    i18n.changeLanguage(ev.target.value);
     setCurrentLang(ev.target.value);
     setLanguageNames(new Intl.DisplayNames([ev.target.value], { type: "language" }));
   };
@@ -44,15 +45,15 @@ const App = () => {
     fetch(`${process.env.NEXT_PUBLIC_ENDPOINT_URL}?YEAR=${anniversaryYear}&LOCALE=${currentLang}`)
         .then(response => response.json())
         .then(responseData => {
-            setResponseObj(responseData);
-            // The actual events array is under the anniversary_events key in the response object
-            let { anniversary_events } = responseData;
-            setLitEvents(anniversary_events);
-            if(responseData.hasOwnProperty('incomplete_translation')) {
-              setEnglishResultsForPartialTranslation(responseData.incomplete_transation);
-            } else {
-              setEnglishResultsForPartialTranslation(false);
-            }
+          if(responseData.hasOwnProperty('incomplete_translation')) {
+            setEnglishResultsForPartialTranslation(responseData.incomplete_translation);
+          } else {
+            setEnglishResultsForPartialTranslation(false);
+          }
+          setResponseObj(responseData);
+          // The actual events array is under the anniversary_events key in the response object
+          let { anniversary_events } = responseData;
+          setLitEvents(anniversary_events);
         })
     return () => {
       setResponseObj({});
