@@ -16,8 +16,8 @@ const AnniversaryEventsTable = props => {
         console.log("currentNavLink = " + currentNavLink);
         console.log(anniversary_events);
         return(
-            <div className="ricorrenzeTblWrapper">
-            <table className="ricorrenzeTbl position-relative">
+            <div className="eventsTblWrapper">
+            <table className="eventsTbl position-relative">
                 <thead>
                     <tr>
                         <th>{t("subject")}</th>

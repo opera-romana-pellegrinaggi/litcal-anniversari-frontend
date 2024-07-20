@@ -34,43 +34,43 @@
   padding-right: 6px;
 }
 
-.ricorrenzeTblWrapper {
+.eventsTblWrapper {
   height: 75vh;
   overflow-y: auto;
   margin: 10px 0;
 }
 
-.ricorrenzeTbl {
+.eventsTbl {
   margin: 0 auto;
   font-size: .8em;
   width: 100%;
   width: stretch;
 }
 
-.ricorrenzeTbl thead {
+.eventsTbl thead {
   position: sticky;
   inset-block-start: 0;
   background-color: darkblue;
   color: rgb(235, 235, 235);
 }
 
-.ricorrenzeTbl th, td {
+.eventsTbl th, td {
   padding: 6px 12px;
 }
 
-.ricorrenzeTbl th, .ucase {
+.eventsTbl th, .ucase {
   text-transform: uppercase;
 }
 
-.ricorrenzeTbl thead tr {
+.eventsTbl thead tr {
   border-bottom: 3px groove white;
 }
 
-.ricorrenzeTbl tbody tr {
-  border-bottom: 1px groove white;
+.eventsTbl tbody tr {
+  border-bottom: 1px groove gray;
 }
 
-.ricorrenzeTbl tbody tr td:nth-child(7),td:nth-child(5) {
+.eventsTbl tbody tr td:nth-child(7),td:nth-child(5) {
   width: 25%;
 }
 
