@@ -1,1 +1,27 @@
-{}
+{
+    "calculate-anniversaries-for-year": "Vypočítať výročia na rok",
+    "anniversary-calculator-saints-universal-calendar": "Kalkulačka výročia pre svätých z univerzálneho kalendára",
+    "anniversaries-for-year": "výročia {{currentNavLink}} v roku {{anniversaryYear}}",
+    "choose-language": "Vyberte jazyk",
+    "subject": "predmet",
+    "anniversary": "výročie",
+    "year": "rok",
+    "liturgical-memorial": "liturgická pamiatka",
+    "event-date": "dátum udalosti",
+    "places": "miesta",
+    "orp-sections": "sektory ORP",
+    "notes": "poznámka",
+    "patronage": "patronát",
+    "birth": "narodenie",
+    "death": "smrť",
+    "burial": "pohreb",
+    "main-shrine": "hlavná svätyňa",
+    "nations": "národy",
+    "no-results": "Nie sú žiadne výsledky",
+    "yearWithCount_one": "{{count}} rok",
+    "yearWithCount_few": "{{count}} roky",
+    "yearWithCount_other": "{{count}} rokov",
+    "read-more": "čítať viac",
+    "notice": "Upozornenie",
+    "english-strings-used": "Niektoré reťazce používajú angličtinu, pretože preklad nie je kompletný."
+}
