@@ -47,7 +47,7 @@
     ]
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^14.2.5",
+    "@next/eslint-plugin-next": "^14.2.10",
     "@testing-library/dom": "^10.1.0",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
@@ -55,7 +55,7 @@
     "browserslist": "^4.23.1",
     "chalk": "^4",
     "eslint": "^8.1.0",
-    "eslint-config-next": "14.2.5",
+    "eslint-config-next": "^14.2.10",
     "i18next-scanner": "^4.5.0",
     "postcss": "^8.4.38",
     "postcss-flexbugs-fixes": "^5.0.2",
