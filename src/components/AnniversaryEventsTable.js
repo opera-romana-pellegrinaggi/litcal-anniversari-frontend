@@ -50,11 +50,11 @@ const AnniversaryEventsTable = props => {
                             }
                         </td>
                         <td>
-                            <div><b className="text-uppercase text-break">{t("birth")}:</b> {el.place_of_birth || ""}</div>
-                            <div><b className="text-uppercase text-break">{t("death")}:</b> {el.place_of_death || ""}</div>
-                            <div><b className="text-uppercase text-break">{t("burial")}:</b> {el.place_of_burial || ""}</div>
-                            <div><b className="text-uppercase text-break">{t("main-shrine")}:</b> {el.main_shrine || ""}</div>
-                            <div><b className="text-uppercase text-break">{t("nations")}:</b> {el.places || ""}</div>
+                            <div className="text-break"><b className="text-uppercase">{t("birth")}:</b> {el.place_of_birth || ""}</div>
+                            <div className="text-break"><b className="text-uppercase">{t("death")}:</b> {el.place_of_death || ""}</div>
+                            <div className="text-break"><b className="text-uppercase">{t("burial")}:</b> {el.place_of_burial || ""}</div>
+                            <div className="text-break"><b className="text-uppercase">{t("main-shrine")}:</b> {el.main_shrine || ""}</div>
+                            <div className="text-break"><b className="text-uppercase">{t("nations")}:</b> {el.places || ""}</div>
                         </td>
                         <td>{el.area_of_interest_lcl.map((aoi,i) => { return <div key={i} className="text-center">{aoi}</div>})}</td>
                         <td><ReadMoreReact key={el.event_idx} text={el.notes || ""} readMoreText={t("read-more")} /></td>
