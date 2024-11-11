@@ -20,14 +20,14 @@ const AnniversaryEventsTable = props => {
             <table className="eventsTbl position-relative">
                 <thead>
                     <tr>
-                        <th>{t("subject")}</th>
-                        <th>{t("anniversary")}</th>
-                        <th>{t("year")}</th>
-                        <th>{t("liturgical-memorial")} / {t("event-date")}</th>
-                        <th>{t("places")}</th>
-                        <th>{t("orp-sections")}</th>
-                        <th>{t("notes")}</th>
-                        <th>{t("patronage")}</th>
+                        <th className="text-uppercase">{t("subject")}</th>
+                        <th className="text-uppercase">{t("anniversary")}</th>
+                        <th className="text-uppercase">{t("year")}</th>
+                        <th className="text-uppercase">{t("liturgical-memorial")} / {t("event-date")}</th>
+                        <th className="text-uppercase">{t("places")}</th>
+                        <th className="text-uppercase">{t("orp-sections")}</th>
+                        <th className="text-uppercase">{t("notes")}</th>
+                        <th className="text-uppercase">{t("patronage")}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,7 +35,7 @@ const AnniversaryEventsTable = props => {
                 return (
                     <tr key={i}>
                         <td>{el.subject}</td>
-                        <td className="ucase">{el.anniversary_type_lcl}</td>
+                        <td className="text-uppercase">{el.anniversary_type_lcl}</td>
                         <td>
                             <div>{el.year}</div>
                             <div>({t('yearWithCount', {count: el.year_diff})})</div>
@@ -50,11 +50,11 @@ const AnniversaryEventsTable = props => {
                             }
                         </td>
                         <td>
-                            <div><b className="ucase">{t("birth")}:</b> {el.place_of_birth || ""}</div>
-                            <div><b className="ucase">{t("death")}:</b> {el.place_of_death || ""}</div>
-                            <div><b className="ucase">{t("burial")}:</b> {el.place_of_burial || ""}</div>
-                            <div><b className="ucase">{t("main-shrine")}:</b> {el.main_shrine || ""}</div>
-                            <div><b className="ucase">{t("nations")}:</b> {el.places || ""}</div>
+                            <div><b className="text-uppercase text-break">{t("birth")}:</b> {el.place_of_birth || ""}</div>
+                            <div><b className="text-uppercase text-break">{t("death")}:</b> {el.place_of_death || ""}</div>
+                            <div><b className="text-uppercase text-break">{t("burial")}:</b> {el.place_of_burial || ""}</div>
+                            <div><b className="text-uppercase text-break">{t("main-shrine")}:</b> {el.main_shrine || ""}</div>
+                            <div><b className="text-uppercase text-break">{t("nations")}:</b> {el.places || ""}</div>
                         </td>
                         <td>{el.area_of_interest_lcl.map((aoi,i) => { return <div key={i} className="text-center">{aoi}</div>})}</td>
                         <td><ReadMoreReact key={el.event_idx} text={el.notes || ""} readMoreText={t("read-more")} /></td>
