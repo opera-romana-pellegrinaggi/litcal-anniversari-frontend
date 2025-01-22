@@ -6312,10 +6312,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["nanoid", [\
-      ["npm:3.3.7", {\
-        "packageLocation": "../../.yarn/berry/cache/nanoid-npm-3.3.7-98824ba130-10c0.zip/node_modules/nanoid/",\
+      ["npm:3.3.8", {\
+        "packageLocation": "../../.yarn/berry/cache/nanoid-npm-3.3.8-d22226208b-10c0.zip/node_modules/nanoid/",\
         "packageDependencies": [\
-          ["nanoid", "npm:3.3.7"]\
+          ["nanoid", "npm:3.3.8"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6790,7 +6790,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/postcss-npm-8.4.31-385051a82b-10c0.zip/node_modules/postcss/",\
         "packageDependencies": [\
           ["postcss", "npm:8.4.31"],\
-          ["nanoid", "npm:3.3.7"],\
+          ["nanoid", "npm:3.3.8"],\
           ["picocolors", "npm:1.1.1"],\
           ["source-map-js", "npm:1.2.1"]\
         ],\
@@ -6800,7 +6800,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/postcss-npm-8.4.49-1c13833dd1-10c0.zip/node_modules/postcss/",\
         "packageDependencies": [\
           ["postcss", "npm:8.4.49"],\
-          ["nanoid", "npm:3.3.7"],\
+          ["nanoid", "npm:3.3.8"],\
           ["picocolors", "npm:1.1.1"],\
           ["source-map-js", "npm:1.2.1"]\
         ],\
