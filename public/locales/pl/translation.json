@@ -1,1 +1,6 @@
-{}
+{
+    "anniversaries-for-year": "rocznice {{currentNavLink}} w roku {{anniversaryYear}}",
+    "choose-language": "Wybierz język",
+    "anniversary-calculator-saints-universal-calendar": "Kalkulator rocznic dla świętych kalendarza uniwersalnego",
+    "calculate-anniversaries-for-year": "Obliczanie rocznic dla danego roku"
+}
