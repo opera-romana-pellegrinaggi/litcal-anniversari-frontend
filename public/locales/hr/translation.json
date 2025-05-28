@@ -1,1 +1,27 @@
-{}
+{
+    "yearWithCount_one": "{{count}} godina",
+    "yearWithCount_few": "{{count}} godine",
+    "yearWithCount_other": "{{count}} godina",
+    "calculate-anniversaries-for-year": "Izračunaj godišnjice za godinu",
+    "anniversary-calculator-saints-universal-calendar": "Kalkulator obljetnica za svece iz općeg kalendara",
+    "anniversaries-for-year": "godišnjice {{currentNavLink}} u godini {{anniversaryYear}}",
+    "choose-language": "Odaberite jezik",
+    "subject": "predmet",
+    "anniversary": "obljetnica",
+    "year": "godina",
+    "liturgical-memorial": "liturgijsko sjećanje",
+    "event-date": "podaci o događaju",
+    "places": "mjesta",
+    "orp-sections": "sektori ORP",
+    "notes": "bilješka",
+    "patronage": "pokroviteljstvo",
+    "birth": "rođenje",
+    "death": "smrt",
+    "burial": "pokop",
+    "main-shrine": "glavno svetište",
+    "nations": "nacije",
+    "no-results": "Nema rezultata",
+    "read-more": "pročitaj više",
+    "notice": "Obavijest",
+    "english-strings-used": "Neki nizovi koriste engleski jer prijevod nije dovršen."
+}
