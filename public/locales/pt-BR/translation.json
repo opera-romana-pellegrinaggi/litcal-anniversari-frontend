@@ -1,1 +1,27 @@
-{}
+{
+    "choose-language": "Escolher idioma",
+    "birth": "nascimento",
+    "liturgical-memorial": "memória litúrgica",
+    "event-date": "data do evento",
+    "no-results": "Não há resultados",
+    "nations": "nações",
+    "year": "ano",
+    "death": "morte",
+    "main-shrine": "santuário principal",
+    "notes": "notas",
+    "notice": "Aviso",
+    "burial": "sepultamento",
+    "subject": "assunto",
+    "places": "lugares",
+    "read-more": "leia mais",
+    "anniversaries-for-year": "aniversários {{currentNavLink}} no ano {{anniversaryYear}}",
+    "english-strings-used": "Algumas strings usam inglês porque a tradução está incompleta.",
+    "anniversary": "recorrência",
+    "orp-sections": "setores ORP",
+    "patronage": "patrocínio",
+    "calculate-anniversaries-for-year": "Calcular aniversários para o ano",
+    "anniversary-calculator-saints-universal-calendar": "Calculadora de Aniversários para os Santos do Calendário Universal",
+    "yearWithCount_one": "",
+    "yearWithCount_many": "",
+    "yearWithCount_other": "{{count}} anos"
+}
