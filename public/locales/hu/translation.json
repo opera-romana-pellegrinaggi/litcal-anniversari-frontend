@@ -1,1 +1,26 @@
-{}
+{
+    "calculate-anniversaries-for-year": "Számítsd ki az évfordulókat az évre",
+    "anniversary-calculator-saints-universal-calendar": "Évforduló Kalkulátor az Egyetemes Naptár Szentjeihez",
+    "anniversaries-for-year": "évfordulók {{currentNavLink}} az évben {{anniversaryYear}}",
+    "choose-language": "Válassz nyelvet",
+    "subject": "tárgy",
+    "anniversary": "ünnep",
+    "year": "év",
+    "liturgical-memorial": "liturgikus emléknap",
+    "event-date": "esemény dátuma",
+    "places": "helyek",
+    "orp-sections": "ORP szektorok",
+    "notes": "megjegyzés",
+    "patronage": "védnökség",
+    "birth": "születés",
+    "death": "halál",
+    "burial": "temetés",
+    "main-shrine": "fő szentély",
+    "nations": "nemzetek",
+    "no-results": "Nincs találat",
+    "yearWithCount_one": "{{count}} év",
+    "yearWithCount_other": "{{count}} év",
+    "read-more": "tudj meg többet",
+    "notice": "Figyelmeztetés",
+    "english-strings-used": "Néhány szöveg angolul van, mivel a fordítás nem teljes."
+}
