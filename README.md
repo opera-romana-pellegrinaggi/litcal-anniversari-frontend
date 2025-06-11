@@ -23,6 +23,8 @@ To build the project to static resources that can be uploaded to a remote server
 yarn build
 ````
 
+Currently there is a publicly available instance published at https://johnromanodorazio.com/LitCalAnniversariesFrontend/.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
