@@ -1350,7 +1350,7 @@ const RAW_RUNTIME_STATE =
           ["ignore", "npm:5.3.2"],\
           ["import-fresh", "npm:3.3.0"],\
           ["js-yaml", "npm:4.1.0"],\
-          ["minimatch", "npm:3.1.2"],\
+          ["minimatch", "npm:3.1.5"],\
           ["strip-json-comments", "npm:3.1.1"]\
         ],\
         "linkType": "HARD"\
@@ -1458,7 +1458,7 @@ const RAW_RUNTIME_STATE =
           ["@humanwhocodes/config-array", "npm:0.13.0"],\
           ["@humanwhocodes/object-schema", "npm:2.0.3"],\
           ["debug", "virtual:1ff4b5f90832ba0a9c93ba1223af226e44ba70c1126a3740d93562b97bc36544e896a5e95908196f7458713e6a6089a34bfc67362fc6df7fa093bd06c878be47#npm:4.3.7"],\
-          ["minimatch", "npm:3.1.2"]\
+          ["minimatch", "npm:3.1.5"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4246,7 +4246,7 @@ const RAW_RUNTIME_STATE =
           ["json-stable-stringify-without-jsonify", "npm:1.0.1"],\
           ["levn", "npm:0.4.1"],\
           ["lodash.merge", "npm:4.6.2"],\
-          ["minimatch", "npm:3.1.2"],\
+          ["minimatch", "npm:3.1.5"],\
           ["natural-compare", "npm:1.4.0"],\
           ["optionator", "npm:0.9.4"],\
           ["strip-ansi", "npm:6.0.1"],\
@@ -4438,7 +4438,7 @@ const RAW_RUNTIME_STATE =
           ["hasown", "npm:2.0.2"],\
           ["is-core-module", "npm:2.15.1"],\
           ["is-glob", "npm:4.0.3"],\
-          ["minimatch", "npm:3.1.2"],\
+          ["minimatch", "npm:3.1.5"],\
           ["object.fromentries", "npm:2.0.8"],\
           ["object.groupby", "npm:1.0.3"],\
           ["object.values", "npm:1.2.0"],\
@@ -4480,7 +4480,7 @@ const RAW_RUNTIME_STATE =
           ["hasown", "npm:2.0.2"],\
           ["jsx-ast-utils", "npm:3.3.5"],\
           ["language-tags", "npm:1.0.9"],\
-          ["minimatch", "npm:3.1.2"],\
+          ["minimatch", "npm:3.1.5"],\
           ["object.fromentries", "npm:2.0.8"],\
           ["safe-regex-test", "npm:1.0.3"],\
           ["string.prototype.includes", "npm:2.0.1"]\
@@ -4515,7 +4515,7 @@ const RAW_RUNTIME_STATE =
           ["estraverse", "npm:5.3.0"],\
           ["hasown", "npm:2.0.2"],\
           ["jsx-ast-utils", "npm:3.3.5"],\
-          ["minimatch", "npm:3.1.2"],\
+          ["minimatch", "npm:3.1.5"],\
           ["object.entries", "npm:1.1.8"],\
           ["object.fromentries", "npm:2.0.8"],\
           ["object.values", "npm:1.2.0"],\
@@ -4972,7 +4972,7 @@ const RAW_RUNTIME_STATE =
           ["fs.realpath", "npm:1.0.0"],\
           ["inflight", "npm:1.0.6"],\
           ["inherits", "npm:2.0.4"],\
-          ["minimatch", "npm:3.1.2"],\
+          ["minimatch", "npm:3.1.5"],\
           ["once", "npm:1.4.0"],\
           ["path-is-absolute", "npm:1.0.1"]\
         ],\
@@ -6127,7 +6127,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["matcher-collection", "npm:2.0.1"],\
           ["@types/minimatch", "npm:3.0.5"],\
-          ["minimatch", "npm:3.1.2"]\
+          ["minimatch", "npm:3.1.5"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6162,10 +6162,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["minimatch", [\
-      ["npm:3.1.2", {\
-        "packageLocation": "../../.yarn/berry/cache/minimatch-npm-3.1.2-9405269906-10c0.zip/node_modules/minimatch/",\
+      ["npm:3.1.5", {\
+        "packageLocation": "../../.yarn/berry/cache/minimatch-npm-3.1.5-86958baf50-10c0.zip/node_modules/minimatch/",\
         "packageDependencies": [\
-          ["minimatch", "npm:3.1.2"],\
+          ["minimatch", "npm:3.1.5"],\
           ["brace-expansion", "npm:1.1.11"]\
         ],\
         "linkType": "HARD"\
@@ -9228,7 +9228,7 @@ const RAW_RUNTIME_STATE =
           ["@types/minimatch", "npm:3.0.5"],\
           ["ensure-posix-path", "npm:1.1.1"],\
           ["matcher-collection", "npm:2.0.1"],\
-          ["minimatch", "npm:3.1.2"]\
+          ["minimatch", "npm:3.1.5"]\
         ],\
         "linkType": "HARD"\
       }]\
